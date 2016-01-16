@@ -20,20 +20,18 @@
         <h1>Varshini Jagannath</h1>
 
         <h2>Favorite Programming Languages</h2>
-        <div class="row">
-        <div class="col s12 m6">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              
-                <ul class="collection">
-                <span class="card-title"><li class="collection-item">HTML 5</li> </span>
-                <li class="collection-item">Javascript</li>
-                </ul></div>
-              </div>
-              </div>
-              </div>
-              </div>
-
+        <div class="card-panel teal">
+        
+          <span class="white-text">HTML 5<span>
+        </div>
+          
+      <div class="card-panel teal">
+        
+          <span class="white-text">Javascript<span>
+          
+        
+      </div>
+     
 
 
         <h2>Favorite Food</h2>
@@ -45,13 +43,13 @@
       <script>
 
         // create a firebase reference to the root
-        var ref = new Firebase('https://varshini-todo.firebaseio.com/')
+        var ref = new Firebase('https://kavyaravikumar.firebaseio.com/')
 
         // read data from the location bio/favorite_foods, only once
-        ref.child('bio/favorite_foods').once('value', function(snapshot){
+        ref.child('varshini-todo').once('value', function(snapshot){
           var foods = snapshot.val()
           foods.forEach(function(food){
-            $('#foods').append('<li class="collection-item">' + food + '</li>')
+            $('#foods').append('<div class="card-panel teal"> <span class="white-text">' + food + '</div> </span>')
           })
         })
       </script>

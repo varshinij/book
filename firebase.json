@@ -1,5 +1,5 @@
 {
-  "firebase": "ucdd2-book",
+  "firebase": "varshini-todo",
   "public": "build",
   "ignore": [
     "firebase.json",
