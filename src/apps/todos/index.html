@@ -17,24 +17,95 @@
 
       <div class="container">
 
-        <h1>My Team's ToDos App</h1>
-        <span class="card-title">Varshini Jagannath</span>
-        <h2>Tasks</h2>
-        
+        <h1 class="center-align">My Team's ToDos App</h1>
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header">Group members</div>
+            <div class="collapsible-body">
+              <ul class="collection">
+                <li class="collection-item">lily Ji</li>
+                <li class="collection-item">hui-min lu</li>
+                <li class="collection-item">Emily Randall</li>
+                <li class="collection-item">Varshini Jagannath </li>
+                <li class="collection-item">Yue Zhang </li>
+                <li class="collection-item"> Yadira Valadeez </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+        <h2 class="light-blue darken-4 white-text center-align">Tasks</h2>
         <ul class="collection" id="tasks">
-          
+        </ul>
 
       </div>
+      
+      <div class="center-align"><a class="waves-effect waves-light btn" href="inbox.html">Add new task</a></div>
+      
+      
+      <div class="row">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s3"><a href="#high">High Priority</a></li>
+            <li class="tab col s3"><a href="#medium">Medium Priority</a></li>
+            <li class="tab col s3"><a href="#low">Low Priority</a></li>
+          </ul>
+        </div>
+        <div id="high" class="col s12">
+          <ul class="collection" id="high-pri"></ul>
+        </div>
+        <div id="medium" class="col s12">
+          <ul class="collection" id="med-pri"></ul>
+        </div>
+        <div id="low" class="col s12">
+          <ul class="collection" id="low-pri"></ul>
+        </div>
+      </div>
+        
 
       <script>
         // create a firebase reference to the root
-        var ref = new Firebase('https://vivid-torch-6257.firebaseio.com/')
-        // read data from the location todos/tasks, only once
-        ref.child('todos/tasks').once('value', function(snapshot){
-          var tasks = snapshot.val()
-          tasks.forEach(function(task){
-            $('#tasks').append('<div class="card-panel teal"> <span class="white-text">' + task + '</div></span>')
-          })
+        var ref = new Firebase('https://shining-fire-9960.firebaseio.com/');
+        
+        var markAsCompleted = function(key) {
+          console.log(key);
+          ref.child('todos/tasks').child(key).update({
+            completed: true
+          });
+        };
+        // read data from the location todos/tasks
+        ref.child('todos/tasks').on('value', function(snapshot){
+          $('#high-pri').empty();
+          $('#med-pri').empty();
+          $('#low-pri').empty();
+          var tasks = snapshot.val();
+          for (var t in tasks) {
+            var task = tasks[t];
+            var card ='<li class="card light-blue lighten-3 z-depth-3 dismissable"><div class="card-content"><span class="card-title">';
+            card += task.title + '</span>';
+            Object.keys(task).forEach(function(key) {
+              if (key != 'title' && key != 'completed' && task[key] != "") {
+                card += '<p>' + key + ': ' + task[key] + '</p>';
+              }
+            })
+            card += '</div>';
+            if (('completed' in task) && task['completed'] == true) {
+              card += '<div class="card-action teal-text text-darken-3">Completed!</div>';
+            }
+            else {
+              card += '<div class="card-action"><a class="btn" onclick=markAsCompleted("' + t + '") class="teal-text text-darken-3">Mark as Completed</a></div>';
+            }
+            card += '</li>';
+            if (task.priority === 'High') {
+              $('#high-pri').append(card);
+            }
+            else if (task.priority === 'Medium') {
+              $('#med-pri').append(card);
+            }
+            else {
+              $('#low-pri').append(card);
+            }
+          }
         })
       </script>
     </body>
