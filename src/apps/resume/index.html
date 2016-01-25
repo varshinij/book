@@ -36,7 +36,7 @@
       <div class="container">
 
         <div align="center"><font size="12" color="#ef5350">Varshini Jagannath</font> </div>
-        <div align ="right"><a class="waves-effect waves-light btn" href="subscribe.html">Subscribe</a></div>
+        <div align ="right"><a class="red lighten-1 waves-effect waves-light btn" href="subscribe.html">Subscribe</a></div>
 
       
             
@@ -93,7 +93,7 @@
           });
         }); */
 
-        // read data from the location work/exp for displaying work experience, only once
+        // read data from the location work/exp for displaying education, only once
         ref.child('work/education').once('value', function(snapshot){
           var exp = snapshot.val()
           exp.forEach(function(experience){
@@ -125,6 +125,9 @@
             $('#contactsec').append('<div class="chip red lighten-3 z-depth-4"> <span class="white-text">' + contact + '</div></span>')
           })
         })
+
+        
+
 
         // Initialize collapse button
   $(".button-collapse").sideNav();
