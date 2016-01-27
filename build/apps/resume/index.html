@@ -25,10 +25,14 @@
 
     <div class="nav-wrapper">
       <a href="#" class="brand-logo center">My Resume</a>
-        <ul class="middle hide-on-med-and-down">
+        <ul class="left hide-on-med-and-down">
     <li><a href="index.html">Home</a></li>
     <li><a href="tasks.html">Tasks</a></li>
     </ul>
+    <ul id="slide-out" class="side-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tasks.html">Tasks</a></li>
+  </ul>
   <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 </nav>
         
@@ -36,7 +40,7 @@
       <div class="container">
 
         <div align="center"><font size="12" color="#ef5350">Varshini Jagannath</font> </div>
-        <div align ="right"><a class="waves-effect waves-light btn" href="subscribe.html">Subscribe</a></div>
+        <div align ="right"><a class="red lighten-1 waves-effect waves-light btn" href="subscribe.html">Subscribe</a></div><div> 
 
       
             
@@ -63,60 +67,87 @@
             <ul class="collection" id="worksec"></ul>
           </div>
           <div id="skillSection" class="col s12">
-            <ul class="collection" id="skillsec"></ul>
+            <br><br>
+            <div class="col s4">
+              <div align="center"><font color="#ef5350"><h4>UX Skills </h4></font></div>
+            <ul class="collection" id="skillsec1"></ul>
+          </div>
+          <div class="col s4">
+            <div align="center"><font color="#ef5350"><h4>Languages </h4></font></div>
+            <ul class="collection" id="skillsec2"></ul>
+          </div>
+          <div class="col s4">
+            <div align="center"><font color="#ef5350"><h4>UX Tools </h4></font></div>
+            <ul class="collection" id="skillsec3"></ul>
           </div>
         </div>
-              
+           
       </div>
       
 
       <script>
         // create a firebase reference to the root
-        var ref = new Firebase('https://varshini-todo.firebaseIO.com')
+        var ref = new Firebase('https://flickering-inferno-3521.firebaseIO.com')
 
 
+        // read data from the location work/exp for displaying education, only once
+         ref.child('work/education').once('value', function(snapshot){
+          var schools = snapshot.val()
+          schools.forEach(function(school){
+            var card ='<div class="card-panel red lighten-2"><div class="card-content"><span class="card-title"><b><span class="white-text">';
+            card += school.University + '</span></b>';
+            Object.keys(school).forEach(function(key) {
+              if (key != 'University') {
+                card += '<p>' + key + ': ' + school[key] + '</p>';
+              }
+            })
+            card += '</span></b></span></div></div>'; 
+            $('#educsec').append(card);
+          });
+        }); 
 
-          /*ref.child('work/education').once('value', function(snapshot){
-          var education = snapshot.val()
-          education.forEach(function(educ){
-            var card ='<div class="card-panel red lighten-2"><div class="card-content"><span class="card-title">';
-            card += job + '</span>';
+
+          ref.child('work/exp').once('value', function(snapshot){
+          var jobs = snapshot.val()
+          jobs.forEach(function(job){
+            var card ='<div class="card-panel red lighten-2"><div class="card-content"><span class="card-title"><b><span class="white-text">';
+            card += job.Employer + '</span></b>';
             Object.keys(job).forEach(function(key) {
-              if (key != 'university') {
+              if (key != 'Employer') {
                 card += '<p>' + key + ': ' + job[key] + '</p>';
               }
             })
-            card += '</span></div></div>'; 
-            var card ='<div class="card-panel red lighten-2"><div class="card-content"><span class="card-title">';
-            card += educ + '</span> </div></div>';
-            $('#educsec').append(card);
+            card += '</span></b></span></div></div>'; 
+            $('#worksec').append(card);
           });
-        }); */
+        }); 
 
-        // read data from the location work/exp for displaying work experience, only once
-        ref.child('work/education').once('value', function(snapshot){
-          var exp = snapshot.val()
-          exp.forEach(function(experience){
-            $('#educsec').append('<div class="card-panel red lighten-2 z-depth-3"> <span class="white-text">' + experience + '</div></span>')
-          })
-        }) 
-
-        // read data from the location work/exp for displaying work experience, only once
-        ref.child('work/exp').once('value', function(snapshot){
-          var exp = snapshot.val()
-          exp.forEach(function(experience){
-            $('#worksec').append('<div class="card-panel red lighten-2 z-depth-3"> <span class="white-text">' + experience + '</div></span>')
-          })
-        })
-
-
-        // read data from the location work/skills for displaying Skills, only once
+        // read data from the location work/skills for displaying UX Skills, only once
         ref.child('work/skills').once('value', function(snapshot){
           var skills = snapshot.val()
           skills.forEach(function(skill){
-            $('#skillsec').append('<div class="card-panel red lighten-2 z-depth-3"> <span class="white-text">' + skill + '</div></span>')
+            $('#skillsec1').append('<div class="card-panel red lighten-2 z-depth-3"> <span class="white-text">' + skill + '</div></span>')
           })
         })
+
+        
+        // read data from the location work/skills for displaying technical languages, only once
+        ref.child('work/languages').once('value', function(snapshot){
+          var skills = snapshot.val()
+          skills.forEach(function(skill){
+            $('#skillsec2').append('<div class="card-panel red lighten-2 z-depth-3"> <span class="white-text">' + skill + '</div></span>')
+          })
+        })
+
+        // read data from the location work/skills for displaying ux tools, only once
+        ref.child('work/tools').once('value', function(snapshot){
+          var skills = snapshot.val()
+          skills.forEach(function(skill){
+            $('#skillsec3').append('<div class="card-panel red lighten-2 z-depth-3"> <span class="white-text">' + skill + '</div></span>')
+          })
+        })
+
+        
 
         // read data from the location work/contact for displaying Contact details, only once
         ref.child('work/contact').once('value', function(snapshot){
@@ -125,6 +156,9 @@
             $('#contactsec').append('<div class="chip red lighten-3 z-depth-4"> <span class="white-text">' + contact + '</div></span>')
           })
         })
+
+        
+
 
         // Initialize collapse button
   $(".button-collapse").sideNav();
