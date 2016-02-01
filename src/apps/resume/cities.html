@@ -8,50 +8,104 @@
 
       <!--Import stylesheet for Leaflet to work-->
       <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
-      <link rel="stylesheet" href="/css/leaflet.label.css" />
+      <link rel="stylesheet" href="leaflet.label.css" />
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <style>
+       body {
+        background-color: #fff3e0; 
+      }
+
+      </style>
     </head>
 
-    <body>
+    <body class ="body" onload="city('chicago','Chicago')">
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
       <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
-      <script src="/js/leaflet.label.js"></script>
+      <script src="leaflet.label.js"></script>
+
+      <nav>
+      <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">My Favourite Cities</a>
+        <ul class="left hide-on-med-and-down">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tasks.html">Tasks</a></li>
+    <li><a href="cities.html">Cities</a></li>
+    </ul>
+    <ul id="slide-out" class="side-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tasks.html">Tasks</a></li>
+    <li><a href="cities.html">Cities</a></li>
+  </ul> 
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+</nav> 
 
       <div class="container">
 
-        <h1>My Favoirte Cities</h1>
-        <div id="cities"></div>
-        <div id="map" style="height:500px"></div>
+      <div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s2"><a href="#" onclick="city('chicago','Chicago')">Chicago</a></li>
+      <li class="tab col s2"><a href="#" onclick="city('lasvegas','Las Vegas')">Las Vegas</a></li>
+      <li class="tab col s2"><a href="#" onclick="city('austin','Austin')">Austin</a></li>
+      <li class="tab col s2"><a href="#" onclick="city('sandiego','San Diego')">San Diego</a></li>
+      <li class="tab col s2"><a href="#" onclick="city('charlotte','Charlotte')">Charlotte</a></li>
+    </ul>
+  </div> 
+
+
+
+
+
+<p>      <br> <br> <br> <br> <p>
+       
+        <div class="col s4">
+            <div  id="cities"></div>
+            <div id="cities1"></div></div>
+        
+        
+        <div id="map"  style="height:400px"></div>
+          
       </div>
+      </div>
+
+
+       
 
       <script>
 
+
+
 // create a firebase reference to the root
-var weatherRef = new Firebase('https://publicdata-weather.firebaseio.com/austin');
 
 var data
-
 // read data from only once
-weatherRef.once('value', function(snapshot){
-  var city = snapshot.val()
-  mapCity(city)
-  displayCity(city, 'austin')
-})
+function city(cityname,name)
+{
 
-var attributionText = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a       href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
+var weatherRef1 = new Firebase('https://publicdata-weather.firebaseio.com/'+cityname);
+weatherRef1.once('value', function(snapshot){
+  var city = snapshot.val()
+  //mapCity(city)
+  
+  displayCity(city, cityname,name)
+})
+}
+
+
+var attributionText = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
 
 // initialzie the map
-var map = L.map($('#map')[0]).setView([39.50, -98.35], 4)
+var map = L.map($('#map')[0]).setView([41.9345334, -90.1570421], 4)
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: attributionText,
     maxZoom: 18,
-    id: 'doubleshow.noeko77m',
-    accessToken: 'pk.eyJ1IjoiZG91Ymxlc2hvdyIsImEiOiJjaWZ5Y3B1eTE1MHRidWRtMG9uZXluajg4In0.u5ONW27Ly5cU7M5KYi6Y9Q'
+    id: 'varshinij.p0gd1h1f',
+    accessToken: 'pk.eyJ1IjoidmFyc2hpbmlqIiwiYSI6ImNpanhwemV2ajE3bTZ2cW01MDBodDN3MHkifQ.dW1sUpYJi8JBiVYmT7FlFw'
 }).addTo(map)
 
 // create a layer group to hold all the markers
@@ -60,7 +114,7 @@ var markersLayerGroup = L.layerGroup()
 markersLayerGroup.addTo(map)
 
 // visualize cities on the map
-function mapCity(city){
+/*function mapCity(city){
   console.log('mapCity', city)
   var latlng = [city.latitude, city.longitude]
   var circle = L.circle(latlng, 10, {
@@ -70,14 +124,41 @@ function mapCity(city){
   }).bindLabel('Austin')
   
   markersLayerGroup.addLayer(circle)
-}
+} */
 
-function displayCity(city, name){
-  console.log('displayCity', city)
-  $('#cities').append('<li class="collection-item">' + name +
-    ' humidity = ' +
-    JSON.stringify(city.currently) + '</li>')
-}
+function displayCity(city, cityname, name){
+  markersLayerGroup.clearLayers()
+ 
+ 
+  var content= '<span class="white-text">'+ 'Temparature : '+'</span>' + JSON.stringify(city.currently.temperature) + '<br>' + '<span class="white-text">'+ 'Humidity : ' +  '</span>' + JSON.stringify(city.currently.humidity) + '<br>' + '<span class="white-text">' +' Dew Point : ' + '</span>' + JSON.stringify(city.currently.dewPoint) + '<br>'+ '<span class="white-text">' +' Precipitation Intensity : ' + '</span>' + JSON.stringify(city.currently.precipIntensity) + '<br>'+ '<span class="white-text">' +' Pressure : ' +'</span>' + JSON.stringify(city.currently.pressure) + '<br>'+ '<span class="white-text">' +' Visibility : ' + '</span>' + JSON.stringify(city.currently.visibility)  + '<br>'+ '<span class="white-text">' +' Wind Speed : ' + '</span>' + JSON.stringify(city.currently.windSpeed)
+
+$('#cities').empty()
+$('#cities1').empty()
+  
+
+  //console.log('displayCity', city)
+  $('#cities1').append('<div class="card-panel red lighten-2 z-depth-3"> ' + content +'</div>')
+  $('#cities').append('<div class="card-panel red lighten-2 z-depth-3"> <span class="white-text">' + ' Summary:  ' + '</span>' + city.currently.summary +'</div></span>')
+  //console.log('mapCity', city)
+ 
+  
+  
+          var myIcon = L.icon({
+    iconUrl: city.currently.icon+'.png',
+   iconSize: [40, 40],
+    iconAnchor: [25,10],
+    popupAnchor: [-3, -76],
+  
+});
+    
+    
+  var latlng = [city.latitude, city.longitude]
+ var marker = L.marker(latlng,{icon: myIcon}, 10).addTo(map);
+    marker.bindLabel(name +'<br>' + content); 
+  markersLayerGroup.addLayer(marker)
+  
+
+} 
 
       </script>
     </body>
