@@ -132,6 +132,9 @@ function displayCity(city, cityname, name){
  
   var content= '<span class="white-text">'+ 'Temparature : '+'</span>' + JSON.stringify(city.currently.temperature) + '<br>' + '<span class="white-text">'+ 'Humidity : ' +  '</span>' + JSON.stringify(city.currently.humidity) + '<br>' + '<span class="white-text">' +' Dew Point : ' + '</span>' + JSON.stringify(city.currently.dewPoint) + '<br>'+ '<span class="white-text">' +' Precipitation Intensity : ' + '</span>' + JSON.stringify(city.currently.precipIntensity) + '<br>'+ '<span class="white-text">' +' Pressure : ' +'</span>' + JSON.stringify(city.currently.pressure) + '<br>'+ '<span class="white-text">' +' Visibility : ' + '</span>' + JSON.stringify(city.currently.visibility)  + '<br>'+ '<span class="white-text">' +' Wind Speed : ' + '</span>' + JSON.stringify(city.currently.windSpeed)
 
+
+  var content1=  'Temparature : ' + JSON.stringify(city.currently.temperature) + '<br>' + 'Humidity : ' + JSON.stringify(city.currently.humidity) + '<br>' +' Dew Point : ' + JSON.stringify(city.currently.dewPoint) + '<br>' +' Precipitation Intensity : ' + JSON.stringify(city.currently.precipIntensity) + '<br>' +' Pressure : '  + JSON.stringify(city.currently.pressure) + '<br>' + ' Visibility : ' + JSON.stringify(city.currently.visibility)  + '<br>' +' Wind Speed : ' + JSON.stringify(city.currently.windSpeed)
+
 $('#cities').empty()
 $('#cities1').empty()
   
@@ -154,7 +157,7 @@ $('#cities1').empty()
     
   var latlng = [city.latitude, city.longitude]
  var marker = L.marker(latlng,{icon: myIcon}, 10).addTo(map);
-    marker.bindLabel(name +'<br>' + content); 
+    marker.bindLabel(name +'<br>' + content1); 
   markersLayerGroup.addLayer(marker)
   
 
