@@ -2,35 +2,54 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>My Resume in ReactJS</title>
+    <title>Resume</title>
 
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-
+    <style>
+         body {
+        background-color: #ef9a9a; 
+      }
+    </style>
 
     <script src="lib/react.js"></script>
     <script src="lib/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
   </head>
-  <body>
-    <div class="container">
-      <div id="navbar"></div>
-
-      <h2 id="about-heading">About Me</h2>
-      <div id="about"></div>
-
-      <h2 id="skills-heading">Skills</h2>
-      <div id="skills"></div>
-
-      <h2 id="tasks-heading">Tasks</h2>
-      <div id="tasks"></div>
-
-      <h2 id="cities-heading">Favorite Cities</h2>
-      <div id="cities"></div>
-    </div>
+  <body background: "images/bg.jpg">
+        <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
+       
+   <div class="container">
+         <div id="about"> </div>
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs  red lighten-3">
+              <li class="tab col s3"><a class="red-text" href="#skill">UX Skills</a></li>
+              <li class="tab col s3"><a class="red-text" href="#task">Tasks</a></li>
+              <li class="tab col s3"><a class="red-text" href="#city">Cities</a></li>
+              <div class="indicator red" style="z-index:1"></div>
+            </ul>
+          </div>
+          <div id="skill" class="col s12">
+            <ul class="collection" id="skills">
+            </ul>
+          </div>
+          <div id="task" class="col s12">
+            <ul class="collection" id="tasks">
+            </ul>
+          </div>
+          <div id="city" class="col s12">
+            <ul class="collection" id="cities">
+            </ul>
+          </div>
+        </div>
+   </div>
     <script>
       // MyComponents is a global object where each property is a reference to a component class
       MyComponents = {}
@@ -46,42 +65,50 @@
     <script type="text/babel" src="components/skill-list.js"></script>
 
     <!-- render react components -->
-    <script type="text/babel">
+   <script type="text/babel">
 
-      ReactDOM.render(
-        <MyComponents.NavBar/>,
-        $('#navbar').get(0)
-      );
+
+
+       // TODO: load skill data from Firebase
+       
+     var ref = new Firebase('https://flickering-inferno-3521.firebaseIO.com');
+          ref.child('work/skills').on('value', function(snapshot){
+            var skills = snapshot.val();
+            ReactDOM.render(
+              <MyComponents.SkillList skills={skills}/>,
+              $('#skills').get(0)
+            );
+          }); 
 
       ReactDOM.render(
         <MyComponents.About/>,
         $('#about').get(0)
       );
 
-      // TODO: load tasks data from Firebase
-      var tasks = [{name: 'go to the movies'}, {name: 'sleep'}]
-
-      ReactDOM.render(
-        <MyComponents.TaskList tasks={tasks}/>,
-        $('#tasks').get(0)
-      );
+    
+var ref = new Firebase('https://shining-fire-9960.firebaseio.com/');
+          ref.child('todos/tasks').on('value', function(snapshot){
+            var tasks = snapshot.val();
+            ReactDOM.render(
+              <MyComponents.TaskList tasks={tasks}/>,
+              $('#tasks').get(0)
+            );
+          });
 
       // TODO: load city weather data from Firebase
-      var cities = [{name: 'Austin'}, {name: 'New York'}]
+    
+var cityStrings = ['chicago', 'lasvegas', 'austin', 'sandiego', 'charlotte'];
+          var weatherRef = new Firebase('https://publicdata-weather.firebaseio.com');
+          weatherRef.on('value', function(snapshot) {
+            var cities = snapshot.val();
+            ReactDOM.render(
+              <MyComponents.CityList cities={cities} names={cityStrings}/>,
+              $('#cities').get(0)
+            );
+          });
 
-      ReactDOM.render(
-        <MyComponents.CityList cities={cities}/>,
-        $('#cities').get(0)
-      );
 
-
-      // TODO: load skill data from Firebase
-      var skills = [{name: 'JavaScript', years: 5}, {name: 'Karate', years: 2}]
-
-      ReactDOM.render(
-        <MyComponents.SkillList skills={skills}/>,
-        $('#skills').get(0)
-      );
+     
 
     </script>
   </body>

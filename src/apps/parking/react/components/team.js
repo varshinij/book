@@ -13,6 +13,8 @@ MyComponents.Team = React.createClass({
               <a className="white" href={'http://something'}>Github</a>
             </li>
     })
+    
+   
 
     return (
       <div className="card">

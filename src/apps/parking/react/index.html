@@ -46,11 +46,13 @@
         $('#navbar').get(0)
       );
 
-      var GARAGE_NAME = 'Golden Gateway Garage'
 
+      var GARAGE_NAME = 'Golden Gateway Garage'
+      
+      
       // data about the team
       // TODO: add more attributes (lastname, github repo link)
-      var members = [{name: 'John'}, {name: 'Mary'}]
+           var members = [{name: 'Bader', lastname: 'Alshemaimri', github: 'https://github.com/usbader'}, {name: 'Caleb', lastname: 'Hsu', github: 'https://github.com/calebhsu'}, {name: 'Varshini', lastname: 'Jagannath', github: 'https://github.com/varshinij'}, {name: 'Yen-Teh', lastname: 'Liu', github: 'https://github.com/yeli7289'}, {name: 'Kavya', lastname: 'Ravikumar', github: 'https://github.com/kavyaravikumar'}]
 
       ReactDOM.render(
         <MyComponents.Team members={members}/>,
@@ -62,11 +64,17 @@
       // make a jQuery call to load the garages data
       $.ajax({url:'garages.snapshot.json'})
         .success(function(garages) {
-
+ 
           console.log('garages:', garages)
+          console.log(Object.keys(garages))
+         
+         
           ReactDOM.render(
+         
             <MyComponents.Garage garage={garages[GARAGE_NAME]}/>,
             $('#garage').get(0)
+            
+            
           )
 
         })

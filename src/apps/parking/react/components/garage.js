@@ -13,6 +13,7 @@ MyComponents.Garage = React.createClass({
         raw data is {JSON.stringify(this.props.garage)}
           <MyComponents.GarageTitle
             title={this.props.garage.friendlyName}/>
+            name={name}
           <MyComponents.GarageSpaces
             open={this.props.garage.open_spaces}
             total={this.props.garage.total_spaces}/>
@@ -20,6 +21,7 @@ MyComponents.Garage = React.createClass({
             rates={this.props.garage.rates}/>
           <MyComponents.GarageHours
             hours={this.props.garage.hours}/>
+
         </div>
       </div>
     );

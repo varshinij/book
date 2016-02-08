@@ -1,34 +1,50 @@
 MyComponents.Task = React.createClass({
 
   render: function() {
+    var thisNode = this;
+    var taskElements = Object.keys(this.props.task).map(function(key,i){
+      var item = thisNode.props.task[key];
+      if (key != 'title' && key != 'completed' && item[key] != "") {
+        return <MyComponents.TaskItem keyName={key} value={item} key={i}/>
+      }
+    });
+    
     return (
-      <div className="card">
+      <li className="card-panel red lighten-1 z-depth-1">
         <div className="card-content">
-        TODO: This is a component to display a task.
-        Raw props data is {JSON.stringify(this.props.task)}
+          <span className="card-title"><b> {this.props.task.title} </b></span>
+          {taskElements}
         </div>
-      </div>
+      </li>
     );
   }
 
 });
 
+MyComponents.TaskItem = React.createClass({
+  render: function() {
+    return (<p><span className="white-text">{this.props.keyName} :</span> {this.props.value}</p> )
+  }
+})
+
 MyComponents.TaskList = React.createClass({
   render: function() {
-
-    var taskElements = this.props.tasks.map(function(t,i){
-      return <MyComponents.Task task={t} key={i}/>
-    })
+    var thisNode = this;
+    var taskElements = Object.keys(this.props.tasks).map(function(key,i){
+      var task = thisNode.props.tasks[key];
+      if (('assigned' in task) && task['assigned'] == 'VarshiniJagannath') {
+        return <MyComponents.Task task={thisNode.props.tasks[key]} key={i}/>
+      }
+    });
 
     return (
-      <div className="card">
-        <div className="card-content">
-        TODO: This is a component to display a list of tasks
-        assigned to me. Raw props data is {JSON.stringify(this.props.tasks)}
+      <div className="row">
+        
+        <ul>
 
         {taskElements}
 
-        </div>
+        </ul>
       </div>
     );
   }
