@@ -6,25 +6,21 @@ MyComponents.Rate = React.createClass({
 
     var beg, end, desc;
     if (typeof(this.props.rate.DESC)!="undefined") {
-      beg = " "
-      end = " "
+      beg = ""
+      end = ""
       desc = this.props.rate.DESC
     }
     else {
-      desc = " "
+      desc = ""
       end = " - "+this.props.rate.END
       beg = this.props.rate.BEG
     }
 
     return (
-
-         
-            <tr><td>{beg}{end}{desc}</td><td>{this.props.rate.RATE} {this.props.rate.RQ}</td></tr>
-  
-    );
+      <tr><td>{beg}{end}{desc}</td><td>${this.props.rate.RATE} {this.props.rate.RQ.toLowerCase()}</td></tr>
+    )
   }
-});
-
+})
 
 MyComponents.GarageRates = React.createClass({
   render: function() {
@@ -34,8 +30,12 @@ MyComponents.GarageRates = React.createClass({
     })
 
     return (
-      <table className="striped centered"><thead><tr><th>Timings</th><th>Rate</th></tr></thead><tr>{rates}</tr></table>
-    
-    );
+      <div className="card">
+        <table className="striped centered">
+          <thead><tr><th>Times</th><th>Rate</th></tr></thead>
+          <tbody>{rates}</tbody>
+        </table>
+      </div>
+    )
   }
-});
+})
