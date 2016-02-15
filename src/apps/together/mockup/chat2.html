@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Compiled and minified CSS -->
+
+
+
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <style>
+       body {
+        background-color: #fff3e0; 
+      }
+
+      </style>
+    </head>
+
+    <body class ="body">
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+      <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+
+      <nav>
+
+    <div class="nav-wrapper deep-orange lighten-2">
+      <a href="#" class="brand-logo center">Critique</a>
+       <!-- <ul class="left hide-on-med-and-down">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tasks.html">Tasks</a></li>
+    <li><a href="cities.html">Cities</a></li>
+    </ul>
+    <ul id="slide-out" class="side-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tasks.html">Tasks</a></li>
+    <li><a href="cities.html">Cities</a></li>
+  </ul> -->
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+</nav>
+  <div class="row">
+  <div class="col s12">
+    
+    <div class="col s4" >
+      <div class="input-field">
+            <input value="" id="title" type="text" class="validate">
+            <label for="title">Search for books</label>
+      </div>
+   
+      <div>
+        <ul class="collection" id="book-title">
+          
+
+        <li class="collection-item avatar ">
+      <img src="goset.jpg" alt="" class="circle">
+      <a class="title blue-grey-text darken-4" href="talkreads.html"><b>Go Set a watchman</b></a>
+      <p>Harper Lee<br>
+
+      <li class="collection-item avatar  deep-orange lighten-2">
+      <img src="nightingale.jpg" alt="" class="circle">
+      <a class="title blue-grey-text darken-4" href="book4"><b>The Nightingale</b></a>
+      <p>Kristin Hannah<br>
+
+      <li class="collection-item avatar">
+      <img src="dead.jpg" alt="" class="circle">
+      <a class="title blue-grey-text darken-4" href="book3.html"><b>Dead Wake: The Last Crossing of the Lusitania</b></a>
+      <p>Eric Larson<br>
+
+      <li class="collection-item avatar">
+      <img src="memory.jpg" alt="" class="circle">
+      <a class="title blue-grey-text darken-4" href="book2.html"><b>Memory Man</b></a>
+      <p>David Baldacci<br>
+      
+     
+        </ul>
+      </div>
+
+      <!--<div class="input-field col s8">
+            <input value="" id="title" type="text" class="validate">
+            <label for="title">Book Title</label>
+      </div>-->
+
+      <div class="input-field col s12">
+        
+         
+      </div>
+     
+ <!-- Modal Trigger -->
+<a data-target="modal2" class="btn-floating btn-large waves-effect waves-light red modal-trigger deep-orange"><i class="material-icons">add</i></a>
+<!-- Modal Structure -->
+  <div id="modal2" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      Add a New Book!
+      <input value=""  type="text" class="validate">
+            <label for="title">Book Title</label>
+       <input value=""  type="text" class="validate">
+            <label for="title">Author</label>
+
+    </div>
+    <div class="modal-footer">
+      <a href="newbook.html" class="modal-action modal-close waves-effect waves-green btn-flat ">Add</a>
+    </div>
+  </div>   
+
+
+      
+    </div>
+
+    <div class="col s8">
+     <div class= "row">
+      </div>
+       <div class= "row">
+      </div>
+       <div class= "row">
+      </div>
+       <div class= "row">
+      </div>
+     <div class="row">
+      <div class="col s12"><div class="chip">
+      
+               
+              <img src="varshini.png" alt="Contact Person">
+                  I love the complexity of the hero
+              </div></div><br><br>
+      <div class="col s6 offset-s4"><div class="chip">
+               
+              <img src="person1.jpg" alt="Contact Person">
+                  Physical similarity to Jack Reacher?
+              </div></div>
+
+      <div class="col s12"><div class="chip">
+               
+              <img src="varshini.png" alt="Contact Person">
+                  yes, I dont why though!
+              </div></div>
+     
+
+
+      <div class="col s6 offset-s4"><div class="chip">
+               
+              <img src="person1.jpg" alt="Contact Person">
+                  I hope the series is as good as Jack Reacher
+              </div></div>
+
+      </ul>
+
+    </div>
+ 
+
+      
+
+
+      <div class="input-field col s7">
+            <input value="" id="chat-title" type="text" class="validate">
+            <label for="title">Chat here</label>
+      </div>
+      <div class="input-field col s1">
+          <button class="btn waves-effect waves-light deep-orange" type="submit" name="action">
+    <i class="material-icons right">send</i>
+  </button>
+      </div>
+    </div>  
+  </div>
+  </div>
+      
+
+      <script>
+      $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal1').leanModal();
+  });
+      /*
+      var ref = new Firebase('https://flickering-inferno-3521.firebaseIO.com')
+      var taskListRef = ref.child('together/book');
+      
+        $('#add').click(function()
+        {
+          var title = $('#title').val();
+          var taskObject = {
+            title: title
+          };
+        taskListRef.push().set(taskObject);
+        })
+
+         ref.child('together/book').on('value', function(snapshot){
+          var books = snapshot.val();
+          $('#book-title').empty();
+          for (var b in books) {
+            var book = books[b];
+            if (typeof(book.chat)="undefined") 
+            {
+            var card ='<li><div class="waves-effect waves-light btn lighten-3 z-depth-4"> <span class="white-text">';
+            card += book.title + '</span>';
+            card += '</span></div><li><br>';
+            $('#book-title').append(card);
+          }
+            
+          }
+        });
+
+         $('#chat-add').click(function()
+        {
+          var chat = $('#chat-title').val();
+          var taskObject = {
+            chat: chat
+          };
+        taskListRef.push().set(taskObject);
+        })
+
+        ref.child('together/book').on('value', function(snapshot){
+          var chats = snapshot.val();
+          $('#chat').empty();
+          for (var c in chats) {
+            var chat = chats[c];
+            var card ='<li><div class="waves-effect waves-light btn lighten-3 z-depth-4"> <span class="white-text">';
+            card += chat.chat + '</span>';
+            card += '</span></div><li><br>';
+            $('#chat').append(card);
+            
+          }
+        });
+       */
+       $(document).ready(function() {
+  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  $('.modal-trigger').leanModal();
+});
+        
+        
+
+      </script>
+    </body>
+  </html>
