@@ -1,6 +1,179 @@
-TODO: Make me pretty
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <!--Import stylesheet for twitter bootstrap-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <style>
+    
+        h1{
+       margin-top: 150px;
+       margin-bottom: 30px;
+       font-size: 75px;
+       color: white;
+       font-weight: bold;
+       text-shadow: 2px 2px black;
+       z-index: 1;
+    }
+       h2{
+       font-size: 25px;
+       color: white;
+       font-weight: bold;
+       text-shadow: 2px 2px black;
+    }
+      p{
+      color: white;
+      }
+    
+    </style>
+</head>
+<body>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+      <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-<ul>
-  <li><a href="admin/">Admin</a></li>
-  <li><a href="client/">Client</a></li>
-</ul>
+      <nav class="navbar-fixed-top">
+        <div class="nav-wrapper green darken-2 ">
+          <div class="container">
+            <a href="index.html" class="brand-logo">COOK IT</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+        <li><a href="client/index.html" style="font-size: 12px"><span class="glyphicon glyphicon-user"></span>User</a></li>
+        <li><a href="admin/index.html" style="font-size: 12px"><span class="glyphicon glyphicon-log-in"></span>Admin</a></li>
+
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div style="background-image: url(img/restaurant.jpg); height: 500px; width: 100%; border: 1px solid black;">
+    <div style="width: 60%; margin: 0 auto;">
+      <h1 class="text-center"> YOUR OWN ON DEMAND CHEF FLEET </h1>
+    </div>
+    </div>
+    <div class="container">
+      <div class="row" style="margin-top: 50px; margin-bottom: 50px">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" style="overflow: hidden; height: 500px;" src="img/chef.jpg">
+            </div>
+            <div class="card-content" style="background-color: black">
+              <h2>CLIENTS</h2>
+            </div>
+      <div class="card-reveal" style="display: none; transform: translateY(0px); background-color: black;">
+        <span class="card-title white-text text-darken-4">FAQs<i class="material-icons right">close</i></span>
+        <ul class="collapsible popout" data-collapsible="accordion">
+        <li style="text-align: left;">
+          <div class="collapsible-header green"><strong>What is CookIt?</strong></div>
+          <div class="collapsible-body" style="background-color: white; padding: 20px;">
+          CookIt is an on-demand service platform where users can request custom made meals from CookIt chefs.
+          </div>
+        </li>
+        <li style="text-align: left;">
+          <div class="collapsible-header green"><strong>Why should I use CookIt?</strong></div>
+          <div class="collapsible-body" style="background-color: white; padding: 20px;">
+          Sometimes we crave different kinds of food. CookIt allows users to request meals of all kinds. 
+          We offer you a ease of use, and a unique, one-of-a-kind experience with the chefs.
+          </div>
+        </li>
+        <li style="text-align: left;">
+          <div class="collapsible-header green"><strong>What services are offered?</strong></div>
+          <div class="collapsible-body" style="background-color: white; padding: 20px;">
+          <b>Premium:</b> Ingredients and service will be provided by the chef.<br/>
+          <b>Standard:</b> Service will be provided by the chef.
+          </div>
+        </li>
+        <li style="text-align: left;">
+          <div class="collapsible-header green"><strong>What are the costs?</strong></div>
+          <div class="collapsible-body" style="background-color: white; padding: 20px;">
+          As of now, we do not have a defined business model. However, costs will be based on 
+          a number of factors, such as time, amount of food, kinds of food, and traffic.
+          </div>
+        </li>
+        <li style="text-align: left;">
+          <div class="collapsible-header green"><strong>What kinds of food do you have?</strong></div>
+          <div class="collapsible-body" style="background-color: white; padding: 20px;">
+          We have a variety of food, including but not limited to: American, Asian (Chinese, Thai, Japanese, Korean, Indian),
+          Mediterranean, French, Italian, Persian. 
+          </div>
+        </li>
+        </ul>
+      </div>
+            <div class="card-action">
+              <a href="#"><strong>CURATE YOUR MEAL TODAY</strong></a>
+            </div>
+          </div>
+        </div>
+    
+    
+    <div class="col-md-6">
+          <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" style="overflow: hidden; height: 500px;" src="img/client.jpg">
+            </div>
+            <div class="card-content" style="background-color: black">
+              <h2>CHEFS</h2>
+            </div>
+      <div class="card-reveal" style="display: none; transform: translateY(0px); background-color: black;">
+      <span class="card-title white-text text-darken-4">FAQs<i class="material-icons right">close</i></span>
+        <ul class="collapsible popout" data-collapsible="accordion">
+        <li style="text-align: left;">
+          <div class="collapsible-header green"><strong>What is CookIt?</strong></div>
+          <div class="collapsible-body" style="background-color: white; padding: 20px;">
+          CookIt is an on-demand service platform where users can request custom made meals from CookIt chefs.
+          </div>
+        </li>
+        <li style="text-align: left;">
+          <div class="collapsible-header green"><strong>Why should I work for CookIt?</strong></div>
+          <div class="collapsible-body" style="background-color: white; padding: 20px;">
+          Ease of earning of course! With CookIt, you can set your own prices, schedule, and services. We bring
+          you your clients, you offer the service!
+          </div>
+        </li>
+        <li style="text-align: left;">
+          <div class="collapsible-header green"><strong>How do I get paid?</strong></div>
+          <div class="collapsible-body" style="background-color: white; padding: 20px;">
+          At the end of each week, CookIt will offer you an 85% royalty for all the services that you've
+          provided.
+          </div>
+        </li>
+        <li style="text-align: left;">
+          <div class="collapsible-header green"><strong>How do I sign up?</strong></div>
+          <div class="collapsible-body" style="background-color: white; padding: 20px;">
+          Register with CookIt as a chef. Select your speciality(s), gather your equipment and/or ingredients, and get started.
+          </div>
+        </li>
+        </ul>
+      </div>
+            <div class="card-action">
+              <a href="#"><strong>SIGN UP TO BECOME A COOKIT CHEF</strong></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <nav class="navbar navbar-default navbar-bottom">
+        <div class="nav-wrapper green darken-2">
+          <div class="container">
+            <p class="brand-logo">Copyright, CookIt 2016</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+</body>
+</html>

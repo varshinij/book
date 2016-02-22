@@ -19,7 +19,7 @@
     <script src="../lib/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <!-- https://github.com/PaulLeCam/react-leaflet -->
@@ -31,10 +31,38 @@
         width: 80%;
         margin: 0 auto;
       }
-    </style>
+
+      h1{
+           margin-top: 30px;
+           margin-bottom: 30px;
+           font-size: 60px;
+           color: teal;
+           font-weight: bold;
+           text-shadow: 2px 2px #ff0000;
+        }
+        
+      
+      </style>
 
   </head>
   <body>
+    <nav>
+        <div class="nav-wrapper green darken-2">
+          <div class="container">
+            <a href="../index.html" class="brand-logo left">COOK IT</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="../client/index.html">User</a></li>
+              <li class="active"><a href="#">Admin</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+            </ul>
+          </div>
+        </div>
+      </nav>
+  <div class="container">
+    <div class="row text-center">
+    </div>
     <div id="app-container" class="container">
     </div>
 
@@ -48,7 +76,9 @@
     <script type="text/babel" src="components/user-list.jsx"></script>
     <script type="text/babel" src="components/user-map.jsx"></script>
     <script type="text/babel" src="components/provider-list.jsx"></script>
+    <script type="text/babel" src="components/stdprovider-list.jsx"></script>
     <script type="text/babel" src="components/provider-map.jsx"></script>
+    <script type="text/babel" src="components/stdprovider-map.jsx"></script>
 
     <!-- Main app container -->
     <script type="text/babel" src="components/app.jsx"></script>

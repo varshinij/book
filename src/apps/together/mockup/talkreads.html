@@ -17,6 +17,67 @@
        body {
         background-color: #fff3e0; 
       }
+      
+    
+.Content
+{
+  height:800px;
+   overflow:auto;
+    
+}
+          .FixedHeightContainer1
+{
+  float:right;
+  height: 50%;
+  width:100%; 
+  padding:3px; 
+  
+   
+}
+.Content1
+{
+  height:700px;
+  overflow:auto;
+    
+}
+
+.app
+          {
+               position: absolute;
+               bottom: 50px;
+          }
+.commentsearch
+          {
+              height:400px;
+              width:500px;
+              border: 3px;
+          }
+.search
+          {
+               position: absolute;
+               bottom: -400px;
+          }
+          
+          
+.comment
+          {
+               position: absolute;
+               bottom: -300px;
+          }
+          
+.searchsend
+          {
+               position: absolute;
+               bottom:-190px;
+               right: -420px;
+          }
+          
+.booklist
+          {
+               position: absolute;
+               bottom:0px;
+               right: -750px;
+          }
 
       </style>
     </head>
@@ -25,42 +86,46 @@
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
-
-      <nav>
-
-    <div class="nav-wrapper deep-orange lighten-2">
-      <a href="#" class="brand-logo center">Critique</a>
-       <!-- <ul class="left hide-on-med-and-down">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="tasks.html">Tasks</a></li>
-    <li><a href="cities.html">Cities</a></li>
-    </ul>
-    <ul id="slide-out" class="side-nav">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="tasks.html">Tasks</a></li>
-    <li><a href="cities.html">Cities</a></li>
-  </ul> -->
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-</nav>
-  <div class="row">
-  <div class="col s12">
     
-    <div class="col s4" >
-      <div class="input-field">
-            <input value="" id="title" type="text" class="validate">
-            <label for="title">Search for books</label>
-      </div>
+         <div class="row">
+        <div class="col s12">
+            <div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;">
+                <a class="btn-floating btn-large red">
+                  <i class="large mdi-navigation-menu"></i>
+                </a>
+                <ul>
+                  <li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add
+                    </i></a></li>
+                  <li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li>
+                  <li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li>
+                </ul>
+            </div>  
+             
+             
+        </div>
+        
+        
+        
+        </div>
+  <div class="row">
+  
+      
+  <div class="col s12 app">
+      <div class="col s4 ">
+      
+            <div class="FixedHeightContainer">
+           
+ 
+        <div class="Content">
    
-      <div>
         <ul class="collection" id="book-title">
           
 
         <li class="collection-item avatar deep-orange lighten-2">
       <img src="goset.jpg" alt="" class="circle">
-      <span class="title"><a class="blue-grey-text darken-4" href="talkreads.html"><b>Go Set a watchman</b></a></span>
+            <span class="title"><a class="blue-grey-text darken-4" href="talkreads.html"><b>Go Set a watchman</b></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4"><i class="material-icons right">info</i></a>
       <p>Harper Lee<br>
-
-      <li class="collection-item avatar">
+  <li class="collection-item avatar">
       <img src="nightingale.jpg" alt="" class="circle">
       <span class="title"><b><a class="blue-grey-text darken-4" href="book4.html">The Nightingale </a></b></span>
       <p>Kristin Hannah<br>
@@ -74,26 +139,113 @@
       <img src="memory.jpg" alt="" class="circle">
       <span class="title blue-grey-text darken-4"><b><a class="blue-grey-text darken-4" href="book2.html">Memory Man</a></b></span>
       <p>David Baldacci<br>
+              <li class="collection-item avatar">
+      <img src="memory.jpg" alt="" class="circle">
+      <span class="title blue-grey-text darken-4"><b><a class="blue-grey-text darken-4" href="book2.html">Memory Man</a></b></span>
+      <p>David Baldacci<br>
+          
+          
+        <li class="collection-item avatar">
+      <img src="memory.jpg" alt="" class="circle">
+      <span class="title blue-grey-text darken-4"><b><a class="blue-grey-text darken-4" href="book2.html">Memory Man</a></b></span>
+      <p>David Baldacci<br>
+          
+              <li class="collection-item avatar">
+      <img src="memory.jpg" alt="" class="circle">
+      <span class="title blue-grey-text darken-4"><b><a class="blue-grey-text darken-4" href="book2.html">Memory Man</a></b></span>
+                  <p>David Baldacci</p><br>
+    
+    <li class="collection-item avatar">
+      <img src="memory.jpg" alt="" class="circle">
+      <span class="title blue-grey-text darken-4"><b><a class="blue-grey-text darken-4" href="book2.html">Memory Man</a></b></span>
+                  <p>David Baldacci</p><br>
+        
+        <li class="collection-item avatar">
+      <img src="memory.jpg" alt="" class="circle">
+      <span class="title blue-grey-text darken-4"><b><a class="blue-grey-text darken-4" href="book2.html">Memory Man</a></b></span>
+                  <p>David Baldacci</p><br>
+            <li class="collection-item avatar">
+      <img src="memory.jpg" alt="" class="circle">
+      <span class="title blue-grey-text darken-4"><b><a class="blue-grey-text darken-4" href="book2.html">Memory Man</a></b></span>
+                  <p>David Baldacci</p><br>
+                <li class="collection-item avatar">
+      <img src="memory.jpg" alt="" class="circle">
+      <span class="title blue-grey-text darken-4"><b><a class="blue-grey-text darken-4" href="book2.html">Memory Man</a></b></span>
+                  <p>David Baldacci</p><br>
+                    
+                    
+                    <li class="collection-item avatar">
+      <img src="memory.jpg" alt="" class="circle">
+      <span class="title blue-grey-text darken-4"><b><a class="blue-grey-text darken-4" href="book2.html">Memory Man</a></b></span>
+                  <p>David Baldacci</p><br>
       
      
         </ul>
       </div>
-
-      <!--<div class="input-field col s8">
-            <input value="" id="title" type="text" class="validate">
-            <label for="title">Book Title</label>
-      </div>-->
-
-
-      <div class="input-field col s12">
-        
-         
       </div>
+            </div>
      
- <!-- Modal Trigger -->
-<a data-target="modal2" class="btn-floating btn-large waves-effect deep-orange waves-light modal-trigger"><i class="material-icons">add</i></a>
-<!-- Modal Structure -->
-  <div id="modal2" class="modal modal-fixed-footer">
+          
+            <!-- Modal Structure book views -->
+  <div id="modal4" class="modal modal-fixed-footer">
+    <div class="modal-content">
+              <div class="row">
+          <div class="col s12">
+            <ul class="tabs">
+              <li class="tab col s3"><a href="#summary">Summary</a></li>
+              <li class="tab col s3"><a href="#views">Views</a></li>
+            </ul>
+          </div>
+          <div id="summary" class="col s12">
+            <ul class="collection" id="educsec"></ul>
+              <p>From Harper Lee comes a landmark new novel set two decades after her beloved Pulitzer Prize–winning masterpiece, To Kill a Mockingbird.</p>
+
+<p>Maycomb, Alabama. Twenty-six-year-old Jean Louise Finch—"Scout"—returns home from New York City to visit her aging father, Atticus. Set against the backdrop of the civil rights tensions and political turmoil that were transforming the South, Jean Louise's homecoming turns bittersweet when she learns disturbing truths about her close-knit family, the town, and the people dearest to her. Memories from her childhood flood back, and her values and assumptions are thrown into doubt. Featuring many of the iconic characters from To Kill a Mockingbird, Go Set a Watchman perfectly captures a young woman, and a world, in painful yet necessary transition out of the illusions of the past—a journey that can only be guided by one's own conscience.</p>
+
+<p>Written in the mid-1950s, Go Set a Watchman imparts a fuller, richer understanding and appreciation of Harper Lee. Here is an unforgettable novel of wisdom, humanity, passion, humor, and effortless precision—a profoundly affecting work of art that is both wonderfully evocative of another era and relevant to our own times. It not only confirms the enduring brilliance of To Kill a Mockingbird, but also serves as its essential companion, adding depth, context, and new meaning to an American classic.</p>
+          </div>
+                 
+          <div id="views" class="col s5">
+             <ul class="collection" id="book-title">
+          
+
+        <li class="collection-item avatar deep-orange lighten-2">
+      <img src="varshini.png" alt="" class="circle">
+            <b>Name </b> Varshini<br>
+            <b>Status: </b> Typing..<br>
+            <b>Total Views: </b> 45
+                 </li><div class="row"></div>
+    <li class="collection-item avatar deep-orange lighten-2">
+      <img src="person1.jpg" alt="" class="circle">
+        <b>Name: </b> John<br>    
+        <b>Status: </b> 12:30 PM, Today<br>
+            <b>Total Views: </b> 26
+        </li><div class="row"></div>
+        <li class="collection-item avatar deep-orange lighten-2">
+      <img src="person1.jpg" alt="" class="circle">
+            <b>name: </b> James<br>
+            <b>Status: </b> Just Now<br>
+            <b>Total Views: </b> 16</li>
+            <div class="row"></div>
+      
+  
+          </div>
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-deep-orange lighten-2 btn-flat tooltipped  " data-position="bottom" data-tooltip="Book Added">Done</a>
+
+     
+    </div>
+  </div>  
+          
+          
+          
+          
+    <!-- Modal Structure adding a new book -->
+  <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
       Add a New Book!
       <input value=""  type="text" class="validate">
@@ -103,27 +255,89 @@
 
     </div>
     <div class="modal-footer">
-      <a href="newbook.html" class="modal-action modal-close waves-effect waves-green btn-flat tooltipped  " data-position="bottom" data-tooltip="Add a New Book">Add</a>
+      <a href="newbook.html" class="modal-action modal-close waves-effect waves-deep-orange lighten-2 btn-flat tooltipped  " data-position="bottom" data-tooltip="Book Added">Add</a>
+        <a class="modal-action modal-close waves-effect waves-deep-orange lighten-2 btn-flat tooltipped  " data-position="bottom" data-tooltip="Book Added">Cancel</a>
      
     </div>
-  </div>   
-
-
+  </div>  
+          
+          
+          
+<!-- Modal Structure searching a book -->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+        
+      Search for a Book!
+      <input value=""  type="text" class="validate">
+            <label for="title">Book title</label>
       
+
     </div>
-
-    <div class="col s8">
-       <div class= "row">
-      </div>
-       <div class= "row">
-      </div>
-       <div class= "row">
-      </div>
-       <div class= "row">
-      </div>
-     <div class="row">
-      <div class="col s12"><div class="chip">
       
+        <div align="center"><a class="btn waves-effect waves-deep-orange lighten-2 modal-close modal-trigger" href="#modal31">Search</a></div>
+    
+  </div> 
+          
+     <!-- Modal Structure for search results -->
+  <div id="modal31" class="modal">
+    <div class="modal-content">
+      Search Results
+      
+            <form action="#">
+    <p>
+      <input type="checkbox" id="test5" />
+      <label for="test5">Harry Potter</label>
+    </p>
+
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-deep-orange lighten-2 btn-flat tooltipped  " data-position="bottom" >Cancel</a>
+        <a href="newbook.html"class="modal-action modal-close waves-effect waves-deep-orange lighten-2 btn-flat tooltipped  " data-position="bottom" >Add</a>
+     
+    </div>
+  </div>  
+          
+      
+      
+      
+       <!-- Modal Structure for profile -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      Profile Information
+      
+          
+    <p>
+      <div class="row">
+          <div class="col s5">
+      <label>Name: Varshini Jagannath</label><br>
+      <label>Age: 23</label><br>
+      <label>Books in Library: 15</label><br>
+        </div>
+          <div class="col s5">
+        <img class="circle" src="varshini.png" width="100" height="100">
+        </div>
+          </div>
+    </p>
+
+    </div>
+    <div class="modal-footer">
+
+        <a class="modal-action modal-close waves-effect waves-deep-orange btn-flat tooltipped  " data-position="bottom" >Close</a>
+     
+    </div>
+  </div>  
+                
+          
+    <div class="col s8 commentsearch" style="float:bottom; position: relative; width:500px height:500px;">
+        
+                <div class="FixedHeightContainer1">
+          <div class="Content1 comment">
+          <ul class="collection" id="book-title">
+        
+    
+          <div class="chip">
+      <div>
+              
                
               <img src="varshini.png" alt="Contact Person">
                   Her idealization of Atticus makes perfect sense
@@ -139,96 +353,127 @@
               <img src="varshini.png" alt="Contact Person">
                   Well, that makes it interesting!
               </div></div>
+               <div class="row"></div>
+              <div class="col s6 offset-s4"><div class="chip">
+               
+              <img src="varshini.png" alt="Contact Person">
+                  Well, that makes it interesting!
+              </div></div>
+              <div class="row"></div>
+              <div class="col s12"><div class="chip">
+               
+              <img src="varshini.png" alt="Contact Person">
+                  Well, that makes it interesting!
+              </div></div>
+               <div class="row"></div>
+              <div class="col s6 offset-s4"><div class="chip">
+               
+              <img src="varshini.png" alt="Contact Person">
+                  Well, that makes it interesting!
+              </div></div>
+               <div class="row"></div>
+              <div class="col s12"><div class="chip">
+               
+              <img src="varshini.png" alt="Contact Person">
+                  Well, that makes it interesting!
+              </div></div>
+               <div class="row"></div>
+              <div class="col s6 offset-s4"><div class="chip">
+               
+              <img src="varshini.png" alt="Contact Person">
+                  Well, that makes it interesting!
+              </div></div>
+               <div class="row"></div>
+              <div class="col s12"><div class="chip">
+               
+              <img src="varshini.png" alt="Contact Person">
+                  Well, that makes it interesting!
+              </div></div>
+               <div class="row"></div>
+              <div class="col s6 offset-s4"><div class="chip">
+               
+              <img src="varshini.png" alt="Contact Person">
+                  Well, that makes it interesting!
+              </div></div>
+               <div class="row"></div>
+              <div class="col s12"><div class="chip">
+               
+              <img src="varshini.png" alt="Contact Person">
+                  Well, that makes it interesting!
+              </div></div>
+               <div class="row"></div>
+              <div class="col s6 offset-s4"><div class="chip">
+               
+              <img src="varshini.png" alt="Contact Person">
+                  Well, that makes it interesting!
+              </div></div>
+               <div class="row"></div>
+              <div class="col s12"><div class="chip">
+               
+              <img src="varshini.png" alt="Contact Person">
+                  Well, that makes it interesting!
+              </div></div>
+               <div class="row"></div>
+              <div class="col s6 offset-s4"><div class="chip">
+               
+              <img src="varshini.png" alt="Contact Person">
+                  Well, that makes it interesting!
+              </div></div>
+               <div class="row"></div>
+              <div class="col s12"><div class="chip">
+               
+              <img src="varshini.png" alt="Contact Person">
+                  Well, that makes it interesting!
+              </div></div>
+               <div class="row"></div>
+               <div class="row"></div>
      
 
 
       
 
       </ul>
-
-    </div>
- 
-
-      
-
-
-      <div class="input-field col s7">
+              </div>
+            <div class="input-field col s8 search" >
             <input value="" id="chat-title" type="text" class="validate">
             <label for="title">Chat here</label>
+                    
       </div>
-      <div class="input-field col s1">
-          <a class="btn waves-effect waves-light deep-orange" type="submit" name="action" href="chat1.html">
+    <div class="input-field col s1 searchsend">
+    <a class="btn waves-effect waves-light deep-orange searchsend" type="submit" name="action" href="chat1.html">
     <i class="material-icons right">send</i>
   </a>
       </div>
-    </div>  
-  </div>
-  </div>
+        
+ 
+          </div>
+        
+          </div>
+          
+          
+          
+          
+          
+          
       
-
-      <script>
-      $(document).ready(function(){
+      
+     <script>
+          
+           $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal1').leanModal();
   });
-      /*
-      var ref = new Firebase('https://flickering-inferno-3521.firebaseIO.com')
-      var taskListRef = ref.child('together/book');
-      
-        $('#add').click(function()
-        {
-          var title = $('#title').val();
-          var taskObject = {
-            title: title
-          };
-        taskListRef.push().set(taskObject);
-        })
-
-         ref.child('together/book').on('value', function(snapshot){
-          var books = snapshot.val();
-          $('#book-title').empty();
-          for (var b in books) {
-            var book = books[b];
-            if (typeof(book.chat)="undefined") 
-            {
-            var card ='<li><div class="waves-effect waves-light btn lighten-3 z-depth-4"> <span class="white-text">';
-            card += book.title + '</span>';
-            card += '</span></div><li><br>';
-            $('#book-title').append(card);
-          }
-            
-          }
-        });
-
-         $('#chat-add').click(function()
-        {
-          var chat = $('#chat-title').val();
-          var taskObject = {
-            chat: chat
-          };
-        taskListRef.push().set(taskObject);
-        })
-
-        ref.child('together/book').on('value', function(snapshot){
-          var chats = snapshot.val();
-          $('#chat').empty();
-          for (var c in chats) {
-            var chat = chats[c];
-            var card ='<li><div class="waves-effect waves-light btn lighten-3 z-depth-4"> <span class="white-text">';
-            card += chat.chat + '</span>';
-            card += '</span></div><li><br>';
-            $('#chat').append(card);
-            
-          }
-        });
-       */
-       $(document).ready(function() {
+          $(document).ready(function() {
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal-trigger').leanModal();
-});
-        
-        
-
-      </script>
-    </body>
-  </html>
+              });
+          
+          
+          
+          </script> 
+      
+      
+  
+            </body>
+      
+            </html>

@@ -1,1 +1,89 @@
-TODO
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Client</title>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
+
+
+    <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
+
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+    <!-- https://github.com/PaulLeCam/react-leaflet -->
+    <script src="https://npmcdn.com/react-leaflet/dist/react-leaflet.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+    <style>
+        h1{
+           margin-top: 30px;
+           margin-bottom: 30px;
+           font-size: 60px;
+           color: teal;
+           font-weight: bold;
+           text-shadow: 2px 2px #ff0000;
+        }
+      
+      </style>
+
+  </head>
+  <body>
+  <nav>
+        <div class="nav-wrapper teal lighten-2">
+            <a href="#index.html" class="brand-logo">Cookit</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li class="active"><a href="client.html">Client</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+    </div>
+    </nav>
+    <div id="app-container" class="container">
+        <div class="row">
+            <div class="col s12">
+              <ul class="tabs">
+                <li class="tab col s3"><a class="active" href="#Standard">Standard</a></li>
+                <li class="tab col s3"><a href="#Premium">Premium</a></li>
+            </ul>
+            </div>
+            <div id="Standard" class="col s12">
+                <img src="images/standard.jpg" style="width:1010px;">
+            </div>
+            <div id="Premium" class="col s12">
+                <img src="images/premium.jpg" style="width:1010px;">
+            </div>
+        </div>
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Click Chef</a>
+
+  <!-- Modal Structure -->
+        <div id="modal1" class="modal bottom-sheet">
+            <div class="modal-content">
+                <h4>Hingle McCringleBerry</h4>
+                <p>Excellent Chef</p>
+            </div>
+                <div class="modal-footer">
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+            </div>
+        </div>
+  </body>
+</html>
+
+<script>
+ $(document).ready(function(){
+    $('ul.tabs').tabs();
+    $('.modal-trigger').leanModal();
+  }); 
+</script>

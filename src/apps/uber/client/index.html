@@ -20,7 +20,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <!-- https://github.com/PaulLeCam/react-leaflet -->
     <script src="https://npmcdn.com/react-leaflet/dist/react-leaflet.min.js"></script>
@@ -31,12 +30,46 @@
         width: 80%;
         margin: 0 auto;
       }
+
+      h1{
+       margin-top: 150px;
+       margin-bottom: 30px;
+       font-size: 75px;
+       color: white;
+       font-weight: bold;
+       text-shadow: 2px 2px black;
+       z-index: 1;
+    }
+       h2{
+       font-size: 25px;
+       color: white;
+       font-weight: bold;
+       text-shadow: 2px 2px black;
+    }
+      p{
+        color: white;
+      }
+
+
+
     </style>
 
   </head>
   <body>
-    <div id="app-container" class="container">
-    </div>
+
+    <div style="background-image: url(../img/restaurant.jpg); height: 1200px; width: 100%; border: 1px solid black;">
+      <div id="app-container">
+      </div>
+  </div>
+
+  <nav class="navbar navbar-default navbar-bottom" >
+      <div class="nav-wrapper green darken-2">
+          <h5>Copyright, CookIt 2016</h5>
+        </div>
+      </div>
+    </nav>
+
+
 
     <script>
       // MyComponents is a global object where each property is a reference to a component class
@@ -46,8 +79,9 @@
     <!-- import each component class in components/ -->
     <!-- The order is important. Dependencies must be loaded first -->
     <script type="text/babel" src="components/navbar.jsx"></script>
-    <script type="text/babel" src="components/team.jsx"></script>
+    <!--<script type="text/babel" src="components/team.jsx"></script> -->
     <script type="text/babel" src="components/map.jsx"></script>
+    <script type="text/babel" src="components/stdmap.jsx"></script>
     <script type="text/babel" src="components/user.jsx"></script>
 
     <!-- Main app container -->

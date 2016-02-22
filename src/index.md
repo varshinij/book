@@ -12,7 +12,7 @@ Everything I've learned from UCDD 2 - Spring 2016.
   * [ReactJS](apps/resume/react)
 * [Parking](apps/parking/)
   * [ReactJS](apps/parking/react)
-<<<<<<< HEAD
+
 * Uber <span class="chip red">NEW</span>
   * [Mockup](apps/uber/mockup)
   * [ReactJS](apps/uber/)
@@ -21,8 +21,8 @@ Everything I've learned from UCDD 2 - Spring 2016.
   * [ReactJS](apps/together)
 
 ## Learning
-* [Week 5](learning/week5) <span class="chip red">NEW</span>
-=======
+* [Week 5](learning/week5) 
+
 * Uber
   * [Mockup](apps/uber/mockup)
   * [ReactJS](apps/uber/)
@@ -31,13 +31,12 @@ Everything I've learned from UCDD 2 - Spring 2016.
     * [Execution](apps/uber/demo/execution.html)
 * Together
   * [Mockup](apps/together/mockup)
-    * [Data Models](apps/together/mockup/data.html) <span class="chip red">NEW</span>
+    * [Data Models](apps/together/mockup/data.html) 
   * [ReactJS](apps/together)
 
 ## Learning
-* [Week 6](learning/week6) <span class="chip red">NEW</span>
+* [Week 6](learning/week6) 
 * [Week 5](learning/week5)
->>>>>>> upstream/master
 * [Week 4](learning/week4)
 * [Week 3](learning/week3)
 * [Week 2](learning/week2)
@@ -45,12 +44,10 @@ Everything I've learned from UCDD 2 - Spring 2016.
 * [Intro](learning/intro)
 
 ## Hackathons
-<<<<<<< HEAD
-* [02-08](hackathons/02-08) <span class="chip red">NEW</span>
-=======
+
+
 * [02-15](hackathons/02-15) <span class="chip red">NEW</span>
 * [02-08](hackathons/02-08)
->>>>>>> upstream/master
 * [02-01](hackathons/02-01)
 * [01-25](hackathons/01-25)
 * [01-18](hackathons/01-18)

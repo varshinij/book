@@ -1,7 +1,8 @@
 // a single 'data' object that holds the data of your entire app, with initial values
 var data = {
   center: [37.78, -122.41], // San Francisco
-  providers: [],
+  premProviders: [],
+  stdProviders: [],
   users: []
 }
 
@@ -24,7 +25,7 @@ function render(){
 // DATA
 //
 
-var firebaseRef = new Firebase('https://ucdd2-book.firebaseio.com/uber')
+var firebaseRef = new Firebase('https://cookit.firebaseio.com/')
 
 // Real-time Data (load constantly on changes)
 firebaseRef.child('users')
@@ -36,10 +37,20 @@ firebaseRef.child('users')
 
   })
 
-firebaseRef.child('providers')
+// Real-time Data (load constantly on changes)
+firebaseRef.child('providers/premium')
   .on('value', function(snapshot){
 
-    data.providers = _.values(snapshot.val())
+    data.premProviders = _.values(snapshot.val())
+
+    render()
+
+  })
+
+firebaseRef.child('providers/standard')
+  .on('value', function(snapshot){
+
+    data.stdProviders = _.values(snapshot.val())
 
     render()
 

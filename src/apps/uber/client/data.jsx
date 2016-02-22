@@ -1,7 +1,8 @@
 // a single 'data' object that holds the data of your entire app, with initial values
 var data = {
   center: [37.78, -122.41], // San Francisco
-  providers: [],
+  premProviders: [],
+  stdProviders: [],
   user: null
 }
 
@@ -24,13 +25,22 @@ function render(){
 // DATA
 //
 
-var firebaseRef = new Firebase('https://ucdd2-book.firebaseio.com/uber')
+var firebaseRef = new Firebase('https://cookit.firebaseio.com/')
 
 // Real-time Data (load constantly on changes)
-firebaseRef.child('providers')
+firebaseRef.child('providers/premium')
   .on('value', function(snapshot){
 
-    data.providers = _.values(snapshot.val())
+    data.premProviders = _.values(snapshot.val())
+
+    render()
+
+  })
+
+firebaseRef.child('providers/standard')
+  .on('value', function(snapshot){
+
+    data.stdProviders = _.values(snapshot.val())
 
     render()
 
@@ -59,7 +69,9 @@ actions.login = function(){
     // handle the result of the authentication
     if (error) {
       console.log("Login Failed!", error);
+      actions.logged = false
     } else {
+      actions.logged = true
       console.log("Authenticated successfully with payload:", authData);
 
       // create a user object based on authData
@@ -91,6 +103,7 @@ actions.logout = function(){
 
   if (data.user){
 
+    actions.logged = false
     firebaseRef.unauth()
 
     var userRef = firebaseRef

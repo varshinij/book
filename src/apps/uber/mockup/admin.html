@@ -1,1 +1,141 @@
-TODO
+<html>
+<head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <!--Import stylesheet for twitter bootstrap-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	  <style>
+		h1{
+		   margin-top: 30px;
+		   margin-bottom: 30px;
+		   font-size: 60px;
+		   color: teal;
+		   font-weight: bold;
+		   text-shadow: 2px 2px #ff0000;
+		}
+	  
+	  </style>
+</head>
+<body>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+      <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
+​
+      <nav>
+        <div class="nav-wrapper teal lighten-2">
+          <div class="container">
+            <a href="index.html" class="brand-logo">COOK IT</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+            	<li><a href="client.html">Client</a></li>
+                <li class="active"><a href="admin.html">Admin</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+            </ul>
+          </div>
+        </div>
+      </nav>
+	  
+	  <div class="container">
+		<div class="row text-center">
+			<h1 style=""> ON DEMAND CHEF FLEET </h1>
+			<img src="images/admin.jpg" width="100%" ></img>
+			<ul class="collapsible popout" data-collapsible="accordion">
+				<li style="text-align: left;">
+				  <div class="collapsible-header teal active"><strong>USERS</strong></div>
+				  <div class="collapsible-body">
+				  <ul class="collapsible popout" data-collapsible="accordion">
+					<li>
+					<div class="collapsible-header teal lighten-2 active"><strong>Andrew</strong></div>
+					<div class="collapsible-body" style="padding: 15px">
+					    <b>Username:</b> Chipmunk123@me.com <br />
+						<b>Status:</b> Online <br/>
+					    <b>Position:</b> [37.231251, 22.3412512] <br/>
+						<b>Service Type:</b> Premium <br/>
+						<b>Location:</b> A Street <br/>
+						<b>Food Class:</b> Italian <br/>
+					</div>
+					</li>
+					<li>
+					<div class="collapsible-header teal lighten-2"><strong>Sarah</strong></div>
+					<div class="collapsible-body" style="padding: 15px">
+					    <b>Username:</b> sarah35p92u13@gmail.com <br/>
+						<b>Status:</b> Online <br/>
+						<b>Position:</b> [37.231251, 22.3412512] <br/>
+						<b>Service Type:</b> Standard <br/>
+						<b>Location:</b> Main Street <br/>
+						<b>Food Class:</b> American <br/>
+					</div>
+					</li>
+					<li>
+					<div class="collapsible-header red lighten-2"><strong>Bob</strong></div>
+					<div class="collapsible-body" style="padding: 15px">
+						<b>Username:</b> bob@hi.com <br/>
+						<b>Status:</b> Offline <br/>
+					</div>
+					</li>
+					<li>
+					<div class="collapsible-header red lighten-2"><strong>Rob</strong></div>
+					<div class="collapsible-body" style="padding: 15px">
+						<b>Username:</b> bob2@hi.com <br/>
+						<b>Status:</b> Offline <br/>
+					</div>
+					</li>
+				  </ul>
+				  </div>
+				</li>
+				<li style="text-align: left;">
+				<div class="collapsible-header teal active"><strong>COOKIT CHEFS</strong></div>
+				  <div class="collapsible-body">
+				  <ul class="collapsible popout" data-collapsible="accordion">
+					<li>
+					<div class="collapsible-header teal lighten-2 active"><strong>Bill</strong></div>
+					<div class="collapsible-body" style="padding: 15px">
+					    <b>Username:</b> billme123@me.com <br />
+						<b>Status:</b> Online <br/>
+					    <b>Position:</b> [37.231251, 22.3412512] <br/>
+						<b>Service Type:</b> Premium <br/>
+						<b>Location:</b> A Street <br/>
+						<b>Specialty:</b> Italian, American, Chinese, Indian <br/>
+					</div>
+					</li>
+					<li>
+					<div class="collapsible-header teal lighten-2 active"><strong>Megan</strong></div>
+					<div class="collapsible-body" style="padding: 15px">
+					    <b>Username:</b> meganme123@me.com <br />
+						<b>Status:</b> Online <br/>
+					    <b>Position:</b> [37.231251, 22.3412512] <br/>
+						<b>Service Type:</b> Standard <br/>
+						<b>Location:</b> Street 456 <br/>
+						<b>Specialty:</b> Korean, Mediterranean, American <br/>
+					</div>
+					</li>
+					<li>
+					<div class="collapsible-header red lighten-2"><strong>Joey</strong></div>
+					<div class="collapsible-body" style="padding: 15px">
+						<b>Username:</b> joey@hi.com <br/>
+						<b>Status:</b> Offline <br/>
+					</div>
+					</li>
+					<li>
+					<div class="collapsible-header red lighten-2"><strong>Sally</strong></div>
+					<div class="collapsible-body" style="padding: 15px">
+						<b>Username:</b> sally@hi.com <br/>
+						<b>Status:</b> Offline <br/>
+					</div>
+					</li>
+				  </ul>
+				  </div>
+				</li>
+			</ul>
+		</div>
+	  </div>
+	  
+</body>
+</html>
