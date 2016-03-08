@@ -6,7 +6,7 @@ layout: layout.hbs
 
 ## Team Members
 
-Varshini Jagannath
+Varshini Jagannath,
 Yadira Valadez
 
 ## Ideation
@@ -54,12 +54,12 @@ It's okay to credit multiple people for the same idea. The rationale of this
 section of the proposal is to demonstrate that everyone on the team contributes
 useful ideas.
 
-* Person 1
+* Varshini Jagannath
   * Info tab for viewing others activity
   * Profile page for users to view recent activity and change personal 
   * Genre based classification
 information
-* Person 2
+* Yadira Valadez
   * Search options and add button for books
   * Starring comments
   * Info tab

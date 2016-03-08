@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Compiled and minified CSS -->
+      <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
+
+
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <style>
+       body {
+        background-color: #fff3e0; 
+        font-family: 'Cinzel', serif;
+      }
+      .card-panel{
+      	width:200px;
+      	height:200px;
+      }
+
+      .font-card {
+      	font-size: 16;
+      }
+      .brand{
+      font-family: 'Tangerine', cursive;
+
+  }
+
+
+     .slider .indicators .indicator-item {
+ background-color: #ffab91;
+}
+
+.slider .indicators .indicator-item.active {
+  background-color: #ff5722;
+} 
+    
+      </style>
+    </head>
+
+    <body>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+      <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+      
+<nav>
+    <div class="nav-wrapper  deep-orange lighten-1  ">
+    	<div class="container">
+      <a href="#" class="brand"><font size="6">Critque</font></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down heading-text ">
+        <li><a href="login.html" class="brand"><font size="6">Login</font></a></li>
+        <li><a href="signup.html" class="brand"><font size="6">SignUp<font></a></li>
+      </ul>
+  </div>
+    </div>
+  </nav>
+
+ <div class="slider parallax-container responsive-img">
+    <ul class="slides">
+     
+      <li>
+      
+       
+        	<img src="images/slider1.png" alt="Find, Share, Discuss and Review Books"/>
+
+        <h3 class="caption right-align"> Find, Share,<br/>Discuss and<br/>Review Books</h3>
+          
+    
+      </li>
+      <li>
+        
+        
+           <img src="images/slider2.png" alt="Meet new people and create your very own real world Book Club"/>
+
+        <h3 class="caption right-align">Meet new people and<br/>create your very own <br/>real world Book Club</h3>
+
+      </li>
+
+ <li>
+        
+        
+           <img src="images/slider3.png" alt="Meet new people and create your very own real world Book Club"/>
+
+        <h3 class="caption right-align">Share your book shelf,<br/> ratings and reviews with </br>the whole community</h3>
+        
+      </li>
+
+    </ul>
+  </div>
+</br></br></br>
+  <div class="conatiner">
+  <div class="row">
+      <div class="col s12">
+      	<div class="col s3">
+        <a href="login.html"><div class="card-panel teal darken-3">
+        <div align="center">
+        	<img src="images/card1.png">
+        </div>
+          <div class="white-text" align="center" ><font size="3"><b>Sign in or Register<b>
+          </div>
+        </div></a>
+      </div>
+
+      <div class="col s3">
+        <a href="login.html"><div class="card-panel red lighten-1">
+        	<div align="center">
+        	<img src="images/card2.png" class="responsive-img ">
+        </div>
+          <div class="white-text" align="center">Create</br> or</br> Join a Book club
+          </div>
+        </div></a>
+      </div>
+
+      <div class="col s3">
+        <a href="login.html"><div class="card-panel light-green darken-3">
+        	<div align="center">
+       <img src="images/card3.png" class="responsive-img ">
+    </div>
+          <div class="white-text" align="center">Invite people</br> to </br>your book club
+          </div>
+        </div>
+      </div></a>
+
+      <div class="col s3">
+        <a href="login.html"><div class="card-panel orange">
+        	<div align="center">
+        	<img src="images/card4.png" class="responsive-img ">
+        </div>
+          <div class="white-text" align="center">Add books</br> to </br> your shelves...
+          </div>
+        </div>
+      </div></a>
+    </div>
+   
+   </div>
+
+      <script>
+ $(document).ready(function(){
+      $('.slider').slider({full_width: true});
+    });
+      
+
+
+      </script>
+    </body>
+  </html>

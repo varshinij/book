@@ -7,7 +7,7 @@ class ProviderList extends React.Component {
     var providers = this.props.premProviders;
 		for (var key in providers){	    
 			providerArr.push(
-          			<div className="card green darken-4" key={providers[key].name}>
+          			<div className="card brown darken-3" key={providers[key].name}>
             			<div className="card-content white-text">
             	  			<span className="card-title">{providers[key].name}</span>
               				<p>

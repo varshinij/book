@@ -70,8 +70,10 @@ actions.login = function(){
     if (error) {
       console.log("Login Failed!", error);
       actions.logged = false
+      actions.loggedFB = false
     } else {
       actions.logged = true
+      actions.loggedFB = false
       console.log("Authenticated successfully with payload:", authData);
 
       // create a user object based on authData
@@ -96,7 +98,44 @@ actions.login = function(){
 
     }
   })
+}
 
+actions.loginFB = function(){
+
+  firebaseRef.authWithOAuthPopup("facebook", function(error, authData){
+
+    // handle the result of the authentication
+    if (error) {
+      console.log("Login Failed!", error);
+      actions.loggedFB = false
+      actions.logged = false
+    } else {
+      actions.loggedFB = true
+      actions.logged = false
+      console.log("Authenticated successfully with payload:", authData);
+
+      // create a user object based on authData
+      var user = {
+        displayName: authData.facebook.displayName,
+        id: authData.facebook.id,
+        pos: data.center,
+        status: "online"  // position, default to the map center
+      }
+
+      var userRef = firebaseRef.child('users').child(user.displayName)
+
+      
+      // subscribe to the user data
+      userRef.on('value', function(snapshot){
+        data.user = snapshot.val()
+        render()
+      })
+
+      // set the user data
+      userRef.set(user)
+
+    }
+  })
 }
 
 actions.logout = function(){
@@ -109,6 +148,30 @@ actions.logout = function(){
     var userRef = firebaseRef
       .child('users')
       .child(data.user.username)
+
+    // unsubscribe to the user data
+    userRef.off()
+
+    // set the user's status to offline
+    userRef.child('status').set('offline')
+
+    data.user = null
+
+    render()
+
+  }
+
+}
+actions.logoutFB = function(){
+
+  if (data.user){
+
+    actions.loggedFB = false
+    firebaseRef.unauth()
+
+    var userRef = firebaseRef
+      .child('users')
+      .child(data.user.displayName)
 
     // unsubscribe to the user data
     userRef.off()
