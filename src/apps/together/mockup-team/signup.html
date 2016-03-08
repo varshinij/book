@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Compiled and minified CSS -->
+
+     
+
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <style>
+
+      body {
+        background-color: #fff3e0; 
+        font-family: 'Cinzel', serif;
+      }
+      .brand{
+      font-family: 'Tangerine', cursive;
+
+  }
+
+  /* label color */
+   .input-field label {
+     color: #ff9800;
+   }
+
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #ff9800;
+   }
+
+     /* label focus color */
+   .input-field input[type=password]:focus + label {
+     color: #ff9800;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 2px solid #ff9800;
+     
+   }
+
+   /* label underline focus color */
+   .input-field input[type=password]:focus {
+     border-bottom: 2px solid #ff9800;
+     
+   }
+
+
+
+      </style>
+    </head>
+
+    <body class ="body">
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+      <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+
+      <nav>
+
+    <div class="nav-wrapper deep-orange lighten-1">
+      <div class="container">
+      <a href="index.html" class="brand center"><font size="6">Critique</font></a>
+    </div>
+       <!-- <ul class="left hide-on-med-and-down">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tasks.html">Tasks</a></li>
+    <li><a href="cities.html">Cities</a></li>
+    </ul>
+    <ul id="slide-out" class="side-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tasks.html">Tasks</a></li>
+    <li><a href="cities.html">Cities</a></li>
+  </ul> -->
+  <!--<a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a> -->
+</nav>
+          
+ <div class="container">
+     
+      <div class="row">
+     </div>
+       <div class="row">
+     </div>
+       <div class="row">
+     </div>
+       <div class="row">
+     </div>
+     
+       <div class="row">
+     </div>
+       <div class="row">
+     </div>
+       <div class="row">
+     </div>
+       <div class="row">
+     </div>
+       <div class="row">
+     </div>
+       <div class="row">
+     </div>
+
+
+     <div class="row">
+      <div class="col s12">
+        <div class="card-panel teal darken-3" align="center">
+
+          <div class="container1"> <h3 align="center" class="white-text">Sign Up</h3>
+     <div class="row" align="center">
+    <form class="col s12">
+      <div class="input-field col s6 offset-s3">
+          <input  id="first_name" type="text" class="validate">
+          <label for="first_name" class="text">Name</label>
+        </div>
+        <div class="input-field col s6 offset-s3">
+          <input  id="first_name" type="text" class="validate">
+          <label for="first_name" class="text">Email:</label>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="input-field col s6 offset-s3">
+          <input id="password" type="password" class="validate">
+          <label for="password" class="text">Password</label>
+        </div>
+      </div>
+     <div class="row">
+        <div class="input-field col s6 offset-s3">
+          <input id="password" type="password" class="validate">
+          <label for="password" class="text">Confirm Password</label>
+        </div>
+      </div>
+                <a class="waves-effect waves-light orange btn white-text" href="index.html">Sign Up</a>
+         <label class="white-text "><br>Already have an Account?</label><a href="login.html"><label class="red-text"><b><u>Login!</u><b></label></a>
+        </div>
+      </div>
+    </div>
+     
+    <!--<div class="container1"> <h3 align="center" class="white-text">Login</h3>
+     <div class="row" align="center">
+    <form class="col s12">
+      <div class="row">
+
+        <div class="input-field col s6 offset-s3">
+          <input  id="first_name" type="text" class="validate">
+          <label for="first_name" class="text">Email:</label>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="input-field col s6 offset-s3">
+          <input id="password" type="password" class="validate">
+          <label for="password" class="text" type="password">Password</label>
+        </div>
+      </div>
+   
+    </form>
+         <br>
+         
+<a class="waves-effect waves-light btn" href="talkreads.html">Login</a>
+         <label for="password" class="text"><br>Don't have an Account?<a href="signup.html">Sign Up!</a></label>
+  </div>
+        </div> -->
+  </div>
+      
+
+      <script>
+      $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal1').leanModal();
+  });
+      /*
+      var ref = new Firebase('https://flickering-inferno-3521.firebaseIO.com')
+      var taskListRef = ref.child('together/book');
+      
+        $('#add').click(function()
+        {
+          var title = $('#title').val();
+          var taskObject = {
+            title: title
+          };
+        taskListRef.push().set(taskObject);
+        })
+
+         ref.child('together/book').on('value', function(snapshot){
+          var books = snapshot.val();
+          $('#book-title').empty();
+          for (var b in books) {
+            var book = books[b];
+            if (typeof(book.chat)="undefined") 
+            {
+            var card ='<li><div class="waves-effect waves-light btn lighten-3 z-depth-4"> <span class="white-text">';
+            card += book.title + '</span>';
+            card += '</span></div><li><br>';
+            $('#book-title').append(card);
+          }
+            
+          }
+        });
+
+         $('#chat-add').click(function()
+        {
+          var chat = $('#chat-title').val();
+          var taskObject = {
+            chat: chat
+          };
+        taskListRef.push().set(taskObject);
+        })
+
+        ref.child('together/book').on('value', function(snapshot){
+          var chats = snapshot.val();
+          $('#chat').empty();
+          for (var c in chats) {
+            var chat = chats[c];
+            var card ='<li><div class="waves-effect waves-light btn lighten-3 z-depth-4"> <span class="white-text">';
+            card += chat.chat + '</span>';
+            card += '</span></div><li><br>';
+            $('#chat').append(card);
+            
+          }
+        });
+       */
+       $(document).ready(function() {
+  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  $('.modal-trigger').leanModal();
+});
+        
+        
+
+      </script>
+    </body>
+  </html>
