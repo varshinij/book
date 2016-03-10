@@ -1,0 +1,67 @@
+var _ = require('lodash')
+var random_name = require('node-random-name');
+var Firebase = require('firebase');
+
+var ref = new Firebase('https://critiquetogether.firebaseio.com');
+var usersRef = ref.child("users");
+
+var userNames = ["Varshini", "yadira", "Roger", "Novak", "Chris"];
+var status = ["online", "offline"]
+var books = ["The Firm","Famous Five","Harry Potter","Fountain Head","Dead Lock"]
+
+// simualate adding a book
+function simulate(){
+
+  // generate a random name and book
+
+  var name = random_name();
+  var book-list =random_book();
+  
+  var users = {
+    name: userNames[Math.floor(Math.random() * userNames.length)],
+    status: Math.floor(Math.random() * status.length)
+    book-list: books[Math.floor(Math.random() * books.length)],
+  }
+
+
+  var duration = 8*Math.random()
+  // simulate adding a book
+  enter(users)
+
+   //simulate deleting a book
+  setTimeout(function(){
+      leave(users)
+    }, duration * 1000)
+
+  //simulate deleting a book
+  setTimeout(function(){
+      edit(users)
+    }, duration * 1000)
+
+  console.log(book);
+}
+
+function enter(users){
+  console.log('add book', person)
+  var personRef = usersRef.child(person.name);
+  personRef.update({book-list: 'The Firm'});
+
+
+}
+
+function leave(users){
+  console.log('delete book', person)
+  var personRef = usersRef.child(person.name);
+
+  personRef.set({status: 'offline'});
+}
+
+function edit(users){
+  console.log('edit book', person)
+  var personRef = usersRef.child(person.name);
+
+  personRef.remove({booklist: 'The Firm'});
+}
+
+// run each second
+setInterval(simulate, 3000)
