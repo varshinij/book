@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+     <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Import materialize.css-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+     <!--Import stylesheet for Leaflet to work-->
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+     <link rel="stylesheet" href="leaflet.label.css" />
+
+     <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   </head>
+
+   <style>
+   html {
+       background: url(sf2.jpg) no-repeat center center fixed; 
+       -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: cover;
+   }
+   </style>
+
+   <body>
+     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+     <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
+     <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+     <script src="leaflet.label.js"></script>
+
+
+     <nav class="nav-wrapper transparent">
+       <a href="/apps/parking/index.html" class="brand-logo center black-text">Team Asia</a>
+       <ul class="right hide-on-med-and-down">
+         <li><a href="garages.html" class="black-text">Garages</a></li>
+         <li><a href="garages_map.html" class="black-text" >Map</a></li>
+       </ul>
+     </nav>
+     
+
+     <div class="container">
+       <h1> </h1>
+       <div id="map" style="height:500px"></div>
+
+     </div>
+
+     <script>
+// create a firebase reference to the root
+var ref = new Firebase('https://publicdata-transit.firebaseio.com/');
+// read data from the location san_francisco/garages, only once
+var markerMove = false;
+var marker;
+ref.child('sf-muni/vehicles').on('value', function(snapshot){
+console.log('data is loaded', snapshot)
+snapshot.forEach(function(bus) {
+    var one = false;
+    if (one == true) {}
+     //console.log("BusLat: "+bus.child('lat').val()+"   BusLong: "+bus.child('lon').val())
+     else {
+         
+        var myIcon = L.icon({
+            iconUrl: 'marker.png',
+            iconSize: [40, 40],
+            iconAnchor: [22, 94],
+            popupAnchor: [-3, -76],
+     
+        });
+         var latlng = [bus.child('lat').val(), bus.child('lon').val()]
+         
+         if (markerMove == false) {
+         
+             marker = L.marker(latlng,{icon: myIcon}).addTo(map);
+             console.log("markermove: "+marker.getLatLng())
+            marker.bindPopup(bus.child('routeTag').val());
+             markerMove = true
+         }
+         
+   
+   console.log("Again")
+         console.log(bus.child('lat').val()+ ":::::"+bus.child('lon').val())
+         drawBus(this.marker, bus);
+         one = true;
+     }
+     
+     
+ })
+ 
+})
+
+var attributionText = 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a       href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
+// create the map
+var map = L.map($('#map')[0]).setView([37.78, -122.41], 13)
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+   attribution: attributionText,
+   maxZoom: 18,
+   id: 'varshinij.p0gd1h1f',
+   accessToken: 'pk.eyJ1IjoidmFyc2hpbmlqIiwiYSI6ImNpanhwemV2ajE3bTZ2cW01MDBodDN3MHkifQ.dW1sUpYJi8JBiVYmT7FlFw'
+}).addTo(map)
+// create a layer group to hold all the markers
+var markersLayerGroup = L.layerGroup()
+// add the makers layer group to the map
+markersLayerGroup.addTo(map)
+
+function drawBus(marker, bus) {
+//var latlng = [bus.child('lat').val(), bus.child('lon').val()]
+ //console.log("out:" + latlng)
+
+    /*var frames =[]
+    var currLat = 0.0
+    var currLng = 0.0
+    console.log("db: "+marker.getLatLng())
+    var fromLat = marker.getLatLng().lat
+    var fromLng = marker.getLatLng().lng
+    if ((fromLat == bus.child('lat').val()) && (fromLng == bus.child('lon').val())) {
+        console.log("true")
+        return;
+    }*/
+
+    console.log("hello"+bus.child('lat').val()+"  "+bus.child('lon').val())
+    console.log("ID: "+bus.child('id').val())
+    var newLatLng = [bus.child('lat').val(),bus.child('lon').val()]
+    marker.setLatLng(newLatLng)
+    markersLayerGroup.addLayer(marker)
+    
+    
+    
+    
+    /*for (var percent = 0; percent < 1; percent += 0.005) {
+            currentLat = fromLat + percent;
+            currentLng = fromLng + percent;
+            var newLatLng = [currentLat, currentLng]
+            console.log("In:"+newLatLng)
+            frames.push(newLatLng);
+          }*/
+     
+    console.log("Check: "+ marker.getLatLng())
+    //moveBus(marker, frames, 0, 25)
+    //markersLayerGroup.addLayer(marker)
+    
+}
+         
+function moveBus (marker, latLngs, index, wait) {
+    console.log("LAtLng: "+latLngs[index])
+    marker.setLatLng(latLngs[index]);
+        if (index !== latLngs.length - 1) {
+          setTimeout(function () {
+                  console.log("con: ")
+            this.moveBus(marker, latLngs, index + 1, wait);
+          }.bind(this), wait);
+        }  
+}
+
+     </script>
+   </body>
+ </html>

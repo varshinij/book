@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Compiled and minified CSS -->
+
+
+
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <style>
+       body {
+        background-color: #fff3e0; 
+           font-family: 'Cinzel', serif;
+      }
+      
+          
+
+
+
+.Content
+{
+  height:500px;
+  overflow:scroll;
+    position:fixed;
+   padding: 0;
+   top: 800px;
+   width:500px; 
+    
+    
+    
+    
+}
+
+.Content1
+{
+  height:500px;
+  overflow:scroll;
+  float:right;
+    position:fixed;
+    
+    width:20%;
+
+    
+}
+
+ </style>
+    </head>
+
+<body class ="body">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+        
+  <nav>
+    <div class="nav-wrapper  deep-orange lighten-1">
+    	<div class="container">
+      <a href="#" class="brand"><font size="6">Critque</font></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down heading-text ">
+        <li><a href="login.html" class="brand"><font size="6">User</font></a></li>
+        
+      </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="row"></div>
+  <div class="row"></div>
+
+        
+  <div class="container">
+    <a class="waves-effect waves-light btn">My Books</a>
+    <a class="waves-effect waves-light btn">Join ChatRoom</a>
+      <div class="row">
+          <div class="col s12">
+              <div class="col s4">
+                  <div style= "overflow-y:scroll; height:500px; position:fixed;">
+                    <ul class="collection" id="book-title">
+                        <li class="collection-item avatar deep-orange lighten-2">
+                        <img src="goset.jpg" alt="" class="circle">
+                        <span class="title"><a class="blue-grey-text darken-4" href="talkreads.html"><b>Go Set a watchman</b></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">
+                        <i class="material-icons right">info</i></a>
+                        <p>Harper Lee<br>
+                        <li class="collection-item avatar">
+                            <img src="nightingale.jpg" alt="" class="circle">
+                            <span class="title"><b><a class="blue-grey-text darken-4" href="book4.html">The Nightingale </a></b></span>
+                            <p>Kristin Hannah<br>
+
+                            <li class="collection-item avatar">
+                            <img src="dead.jpg" alt="" class="circle">
+                            <span class="title"><b><a class="blue-grey-text darken-4" href="book3.html">Dead Wake: The Last Crossing of the Lusitania </a></b></span>
+                            <p>Eric Larson<br>
+
+                            <li class="collection-item avatar">
+                            <img src="memory.jpg" alt="" class="circle">
+                            <span class="title blue-grey-text darken-4"><b><a class="blue-grey-text darken-4" href="book2.html">Memory Man</a></b></span>
+                            <p>David Baldacci<br>
+                                    <li class="collection-item avatar">
+                            <img src="memory.jpg" alt="" class="circle">
+                            <span class="title blue-grey-text darken-4"><b><a class="blue-grey-text darken-4" href="book2.html">Memory Man</a></b></span>
+ 
+      
+     
+                    </ul>
+                  </div>
+              </div>
+              <div class="col s8">
+                <div style= "overflow-y:scroll; height:500px; padding-left:37%; width:500px;position:fixed;">
+                  <ul class="collection" id="book-title">
+                    <div class="chip">
+                    <div>
+
+                    <img src="varshini.png" alt="Contact Person">
+                        Her idealization of Atticus makes perfect sense
+                    </div></div><br><br>
+                    <div class="col s6 offset-s4"><div class="chip">
+                     
+                    <img src="person1.jpg" alt="Contact Person">
+                        Surprised at the heroic Atticus Finch is racist
+                    </div></div>
+
+                    <div class="col s12"><div class="chip">
+                     
+                    <img src="varshini.png" alt="Contact Person">
+                        Well, that makes it interesting!
+                    </div></div>
+                     <div class="row"></div>
+                    <div class="col s6 offset-s4"><div class="chip">
+                     
+                    <img src="varshini.png" alt="Contact Person">
+                        Well, that makes it interesting!
+                    </div></div>
+                    <div class="row"></div>
+                    <div class="col s12"><div class="chip">
+                     
+                    <img src="varshini.png" alt="Contact Person">
+                        Well, that makes it interesting!
+                    </div></div>
+                     <div class="row"></div>
+                    <div class="col s6 offset-s4"><div class="chip">
+                     
+                    <img src="varshini.png" alt="Contact Person">
+                        Well, that makes it interesting!
+                    </div></div>
+                     <div class="row"></div>
+                    <div class="col s12"><div class="chip">
+                     
+                    <img src="varshini.png" alt="Contact Person">
+                        Well, that makes it interesting!
+                    </div></div>
+                     <div class="row"></div>
+                    <div class="col s6 offset-s4"><div class="chip">
+                     
+                    <img src="varshini.png" alt="Contact Person">
+                        Well, that makes it interesting!
+                    </div></div>
+                     
+                    
+                     
+                    
+                     <div class="row"></div>
+                     <div class="row"></div>
+            
+           
+                  </ul>
+      
+                </div>
+            
+                 
+                 
+              </div>
+         
+          </div>
+        </div>
+      
+            </div>
+             </div>
+            
+
+            <div class="input-field col s8" style="padding-top:26%;padding-left:54%; width:80%;position:fixed;">
+            <input value="" id="chat-title" type="text" class="validate">
+               
+                    
+      </div>
+    <div class="input-field col s1" style="padding-top:26%;padding-left:80%; width:80%;position:fixed;">
+    <a class="btn waves-effect waves-light deep-orange searchsend" type="submit" name="action" href="chat1.html">
+    <i class="material-icons right">send</i>
+  </a>
+      </div>
+            
+            
+            </div>
+             
+             
+        
+          
+          
+          
+          
+          
+      
+      
+     <script>
+          
+           $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal1').leanModal();
+  });
+          $(document).ready(function() {
+  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  $('.modal-trigger').leanModal();
+              });
+          
+          
+          
+          </script> 
+      
+      
+  
+            </body>
+      
+            </html>

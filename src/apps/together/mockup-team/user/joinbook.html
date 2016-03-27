@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Compiled and minified CSS -->
+
+     
+
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <style>
+
+      body {
+        background-color: #fff3e0; 
+        font-family: 'Cinzel', serif;
+      }
+      .brand{
+      font-family: 'Tangerine', cursive;
+
+  }
+
+  /* label color */
+   .input-field label {
+     color: #ff9800;
+   }
+
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #ff9800;
+   }
+
+     /* label focus color */
+   .input-field input[type=password]:focus + label {
+     color: #ff9800;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 2px solid #ff9800;
+     
+   }
+
+   /* label underline focus color */
+   
+
+
+      </style>
+    </head>
+
+    <body class ="body">
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+      <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+<div id="app-container"> </div>
+          
+ <div class="container">
+     
+      <div class="row">
+     </div>
+       <div class="row">
+     </div>
+       <div class="row">
+     </div>
+       <div class="row">
+     </div>
+     
+       <div class="row">
+     </div>
+       <div class="row">
+     </div>
+       <div class="row">
+     </div>
+       <div class="row">
+     </div>
+       <div class="row">
+     </div>
+       <div class="row">
+     </div>
+
+
+     <form action="#" id="books">
+   
+  </form>
+     
+    
+  </div>
+      
+
+      <script>
+
+
+      var root = new Firebase('https://critiquetogether.firebaseio.com/');
+      var booksRef = root.child('books');
+
+
+      
+      
+      $('#add').click(function()
+      {
+        
+        console.log(booksRef);
+      var name= $('#name').val();
+      var author= $('#author').val();
+      var description= $('#description').val();
+      var genre= $('#genre').val();
+
+      var booksstruct = {
+      name: name,
+      author: author,
+      description: description,
+      genre: genre,
+      //addedMember: addedMembers[Math.floor(Math.random() * addedMembers.length)]
+                        }
+
+      var bookName=$('#name').val();
+      root.child('books').child(bookName).once('value', function(snapshot) {
+      var exists = (snapshot.val() !== null);
+      bookExistsCallback(bookName, exists);
+      });
+      function bookExistsCallback(userId, exists) {
+  if (exists) 
+  {
+    alert("This book already exists!");
+  }
+
+  else
+  {
+     var bookRef = booksRef.child(booksstruct.name);
+    
+
+            bookRef.push(booksstruct);
+
+  }
+          
+
+      } })
+  
+        
+        /*$('#submit').click(function(){
+          console.log('the add button is clicked')
+          var Name = $('#name').val();
+          bookRef.push().set({
+            email: email
+          });
+          location.href = 'index.html';
+        }); */
+        
+        
+
+      </script>
+      <script>
+      // MyComponents is a global object where each property is a reference to a component class
+      MyComponents = {}
+    </script>
+
+      <script type="text/babel" src="components/navbar.jsx"></script>
+      <script type="text/babel" src="components/bookview.jsx"></script>
+      <script type="text/babel" src="components/message.js"></script>
+      <!-- Main app container -->
+    
+    <script type="text/babel" src="components/app.jsx"></script>
+    <!-- Connect the app and data -->
+    
+   <!-- <script type="text/babel" src="data1.jsx"></script>-->
+    <script type="text/babel" src="data.jsx"></script> 
+    
+    </body>
+  </html>
