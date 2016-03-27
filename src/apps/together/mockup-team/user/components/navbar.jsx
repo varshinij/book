@@ -16,6 +16,8 @@ class NavBar extends React.Component {
               </div>
         </div>
         </nav>
+        <div className="row"></div>
+       <div className="row"></div>
         <div className="row">
         <div className="col s3"><a className="btn" onClick={this.props.actions.addbook}>Add a New Book</a></div>
         <div className="col s3 offset-s1"><a className="btn" href="#"onClick={this.props.actions.joinbook}>Join a Book Room</a></div>

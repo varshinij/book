@@ -50,7 +50,7 @@ function sendmsg(messages){
         message: message[Math.floor(Math.random() * message.length)],
         messageID: messageID[Math.floor(Math.random() * messageID.length)],
         timestamp: timeStamp[Math.floor(Math.random() * timeStamp.length)],
-        sender: timeStamp[Math.floor(Math.random() * timeStamp.length)]
+        sender: senderUsername[Math.floor(Math.random() * timeStamp.length)]
         
       }
   var messageRef1 = usersRef.child(messages.bookName);

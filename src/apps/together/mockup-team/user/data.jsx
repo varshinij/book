@@ -87,8 +87,8 @@ actions.login = function(){
         render()
       })
       
-      $('#buttons1').append('<div class="row"><div class="col s12"><div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;"><a class="btn-floating btn-large red"><i class="large mdi-navigation-menu"></i></a><ul><li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li><li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li><li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li></ul></div></div></div>');
-      $('#tabs').append('<div class="row"><div class="col s12"><div class="col s4" id="book"></div><div class="col s6 offset-s1" id="message"></div></div>');
+      //$('#buttons1').append('<div class="row"><div class="col s12"><div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;"><a class="btn-floating btn-large red"><i class="large mdi-navigation-menu"></i></a><ul><li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li><li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li><li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li></ul></div></div></div>');
+      $('#tabs').append('<div class="FixedHeightContainer"><div class="Content"><div class="col s4" id="book"></div></div></div><div class="FixedHeightContainer"><div class="Content1"><div class="col s6 offset-s1" id="message"></div></div></div>');
 
       userRef.on('value',function(snapshot){
         //console.log("User books:")
@@ -291,7 +291,7 @@ actions.addbook = function(){
       //$('#joinBook').append('<a class="btn-floating green modal-trigger" href="addBook.html"><i class="material-icons">perm_identity</i></a>');
       //$('#profile').append('<a class="btn-floating blue modal-trigger" href="addBook.html"><i class="material-icons">add</i></a>');
       $('#buttons1').append('<div class="row"><div class="col s12"><div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;"><a class="btn-floating btn-large red"><i class="large mdi-navigation-menu"></i></a><ul><li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li><li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li><li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li></ul></div></div></div>');
-      $('#tabs').append('<div class="row"><div class="col s12"><div class="col s4" id="book"></div><div class="col s6 offset-s1" id="message"></div></div>');
+      $('#tabs').append('<div class="FixedHeightContainer"><div class="Content"><div class="col s4" id="book"></div></div></div><div class="FixedHeightContainer"><div class="Content1"><div class="col s6 offset-s1" id="message"></div></div></div>');
 
         userRef.on('value',function(snapshot){
         //console.log("User books:")
@@ -327,7 +327,7 @@ actions.addbook = function(){
 
                   //console.log("bookname[j]" + bookname[j]);
            
-                  $('#book').append('<ul class="collection"><div class="card cyan darken-1"><div class="card-content"><li class="collection-item><span class="title white-text">' + bookname[j] + '</span></li></div></div></ul>' );
+                  $('#book').append('<ul class="collection" id="book-title"><li class="collection-item avatar deep-orange lighten-2" align="center"><a class="blue-grey-text darken-4" href="talkreads.html"><h4><b>'+bookname[j]+'</b></h4></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">');
          
                   //render()
                 })
@@ -386,7 +386,7 @@ actions.addbook = function(){
       })
       $('#main').empty();
       $('#buttons1').append('<div class="row"><div class="col s12"><div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;"><a class="btn-floating btn-large red"><i class="large mdi-navigation-menu"></i></a><ul><li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li><li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li><li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li></ul></div></div></div>');
-      $('#tabs').append('<div class="row"><div class="col s12"><div class="col s4" id="book"></div><div class="col s6 offset-s1" id="message"></div></div>');
+      $('#tabs').append('<div class="FixedHeightContainer"><div class="Content"><div class="col s4" id="book"></div></div></div><div class="FixedHeightContainer"><div class="Content1"><div class="col s6 offset-s1" id="message"></div></div></div>');
 
       userRef.on('value',function(snapshot){
         //console.log("User books:")
@@ -407,7 +407,7 @@ actions.addbook = function(){
                 var newBookRef = bookRef.child(bookname[j])
                 newBookRef.on('value', function(s){
                   data.books.push(s.val())
- $('#book').append('<ul class="collection"><div class="card cyan darken-1"><div class="card-content"><li class="collection-item><span class="title white-text">' + bookname[j] + '</span></li></div></div></ul>' );
+ $('#book').append('<ul class="collection" id="book-title"><li class="collection-item avatar deep-orange lighten-2" align="center"><a class="blue-grey-text darken-4" href="talkreads.html"><h4><b>'+bookname[j]+'</b></h4></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">');
          
                   //render()
                 })
@@ -595,7 +595,7 @@ var userBooks=[]
       
       
       $('#buttons1').append('<div class="row"><div class="col s12"><div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;"><a class="btn-floating btn-large red"><i class="large mdi-navigation-menu"></i></a><ul><li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li><li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li><li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li></ul></div></div></div>');
-      $('#tabs').append('<div class="row"><div class="col s12"><div class="col s4" id="book"></div><div class="col s6 offset-s1" id="message"></div></div>');
+      $('#tabs').append('<div class="FixedHeightContainer"><div class="Content"><div class="col s4" id="book"></div></div></div><div class="FixedHeightContainer"><div class="Content1"><div class="col s6 offset-s1" id="message"></div></div></div>');
 
       userRef.on('value',function(snapshot){
         //console.log("User books:")
@@ -616,7 +616,7 @@ var userBooks=[]
                 var newBookRef = bookRef.child(bookname[j])
                 newBookRef.on('value', function(s){
                   data.books.push(s.val())
- $('#book').append('<ul class="collection"><div class="card cyan darken-1"><div class="card-content"><li class="collection-item><span class="title white-text">' + bookname[j] + '</span></li></div></div></ul>' );
+ $('#book').append('<ul class="collection" id="book-title"><li class="collection-item avatar deep-orange lighten-2" align="center"><a class="blue-grey-text darken-4" href="talkreads.html"><h4><b>'+bookname[j]+'</b></h4></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">');
          
                   //render()
                 })
@@ -704,7 +704,7 @@ var userBooks=[]
       
       
       $('#buttons1').append('<div class="row"><div class="col s12"><div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;"><a class="btn-floating btn-large red"><i class="large mdi-navigation-menu"></i></a><ul><li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li><li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li><li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li></ul></div></div></div>');
-      $('#tabs').append('<div class="row"><div class="col s12"><div class="col s4" id="book"></div><div class="col s6 offset-s1" id="message"></div></div>');
+      $('#tabs').append('<div class="FixedHeightContainer"><div class="Content"><div class="col s4" id="book"></div></div></div><div class="FixedHeightContainer"><div class="Content1"><div class="col s6 offset-s1" id="message"></div></div></div>');
 
       userRef.on('value',function(snapshot){
         //console.log("User books:")
@@ -725,7 +725,7 @@ var userBooks=[]
                 var newBookRef = bookRef.child(bookname[j])
                 newBookRef.on('value', function(s){
                   data.books.push(s.val())
- $('#book').append('<ul class="collection"><div class="card cyan darken-1"><div class="card-content"><li class="collection-item><span class="title white-text">' + bookname[j] + '</span></li></div></div></ul>' );
+ $('#book').append('<ul class="collection" id="book-title"><li class="collection-item avatar deep-orange lighten-2" align="center"><a class="blue-grey-text darken-4" href="talkreads.html"><h4><b>'+bookname[j]+'</b></h4></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">');
          
                   //render()
                 })
@@ -877,7 +877,7 @@ var subtractedBooks=[]
       //userRef.child('bookList').set(booksChecked);
       userRef.child('bookList').set(subtractedBooks);
       
-      $('#tabs').append('<div class="row"><div class="col s12"><div class="col s4" id="book"></div><div class="col s6 offset-s1" id="message"></div></div>');
+      $('#tabs').append('<div class="FixedHeightContainer"><div class="Content"><div class="col s4" id="book"></div></div></div><div class="FixedHeightContainer"><div class="Content1"><div class="col s6 offset-s1" id="message"></div></div></div>');
 
       userRef.on('value',function(snapshot){
         console.log("User books: "+book)
@@ -928,7 +928,7 @@ var subtractedBooks=[]
                 var newBookRef = bookRef.child(bookname[j])
                 newBookRef.on('value', function(s){
                   data.books.push(s.val())
- $('#book').append('<ul class="collection"><div class="card cyan darken-1"><div class="card-content"><li class="collection-item><span class="title white-text">' + bookname[j] + '</span></li></div></div></ul>' );
+ $('#book').append('<ul class="collection" id="book-title"><li class="collection-item avatar deep-orange lighten-2" align="center"><a class="blue-grey-text darken-4" href="talkreads.html"><h4><b>'+bookname[j]+'</b></h4></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">');
          
                   //render()
                 })
@@ -985,7 +985,7 @@ $('#back3').click(function()
       })
       $('#main').empty();
       $('#buttons1').append('<div class="row"><div class="col s12"><div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;"><a class="btn-floating btn-large red"><i class="large mdi-navigation-menu"></i></a><ul><li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li><li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li><li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li></ul></div></div></div>');
-      $('#tabs').append('<div class="row"><div class="col s12"><div class="col s4" id="book"></div><div class="col s6 offset-s1" id="message"></div></div>');
+      $('#tabs').append('<div class="FixedHeightContainer"><div class="Content"><div class="col s4" id="book"></div></div></div><div class="FixedHeightContainer"><div class="Content1"><div class="col s7 offset-s1" id="message"></div></div></div>');
 
       userRef.on('value',function(snapshot){
         //console.log("User books:")
@@ -1006,7 +1006,7 @@ $('#back3').click(function()
                 var newBookRef = bookRef.child(bookname[j])
                 newBookRef.on('value', function(s){
                   data.books.push(s.val())
- $('#book').append('<ul class="collection"><div class="card cyan darken-1"><div class="card-content"><li class="collection-item><span class="title white-text">' + bookname[j] + '</span></li></div></div></ul>' );
+ $('#book').append('<ul class="collection" id="book-title"><li class="collection-item avatar deep-orange lighten-2" align="center"><a class="blue-grey-text darken-4" href="talkreads.html"><h4><b>'+bookname[j]+'</b></h4></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">');
          
                   //render()
                 })
@@ -1028,7 +1028,7 @@ $('#back3').click(function()
             var email = emails[key];
             
             
-            $('#message').append('<ul class="collection"><li>' + email['message'] + '</li></ul>');
+            $('#message').append('<ul class="collection"><li><b>'+email['sender']': </b>' + email['message'] + '</li></ul>');
           }
         });
 
