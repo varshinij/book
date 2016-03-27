@@ -32,30 +32,36 @@ function simulate(){
   // simulate this person leaving after 'duration' seconds
   setTimeout(function(){
     leave(person)
-  }, duration * 1000)
+  }, duration * 5000)
 
 }
 
 function enter(person){
   console.log('enter', person)
-  // put this person in the Firebase
-  var ref = new Firebase('https://sfparking-teamasia.firebaseio.com/')
-  ref.child(person.name).set(person)
+  var ref = new Firebase('https://sfparking-teamasia.firebaseio.com')
+  var customer = ref.child(person.name).set(person)
+
+  // TODO: put this person in the Firebase
+  // var ref = new Firebase('your-firebase-url')
+  // ...
 }
 
 function leave(person){
   console.log('leave', person)
-  // remove this person from the Firebase
-  var ref = new Firebase('https://sfparking-teamasia.firebaseio.com/')
+  var ref = new Firebase('https://sfparking-teamasia.firebaseio.com')
   ref.child(person.name).remove()
-
+  // TODO: remove this person from the Firebase
+  // var ref = new Firebase('your-firebase-url')
+  // ...
 }
 
 
 function clear(){
-  // remove all people from the Firebase
-  var ref = new Firebase('https://sfparking-teamasia.firebaseio.com/')
+  var ref = new Firebase('https://sfparking-teamasia.firebaseio.com')
   ref.remove()
+  // TODO: remove all people from the Firebase
+  // var ref = new Firebase('your-firebase-url')
+  // ...
 }
 
 

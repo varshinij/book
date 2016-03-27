@@ -5,7 +5,7 @@ var Firebase = require('firebase');
 
 var ref = new Firebase('https://critiquetogether.firebaseio.com');
 var usersRef = ref.child("messages");
-
+var bookName = ["The Firm","Famous Five","Harry Potter","Fountain Head","Dead Lock","Dead"]
 
 var messageID = ["4567","34378","54393","28459"]
 var message = ["This is great book.I loved it!","I have read half the book and its very interesting","Does the main character die in the end?Very curious!!","The book is so interesting and gripping till the end."]
@@ -19,6 +19,7 @@ function simulate(){
 
 
   var messages = {
+    bookName: bookName[Math.floor(Math.random() * bookName.length)],
     msgID: messageID[Math.floor(Math.random() * messageID.length)],
     msg: message[Math.floor(Math.random() * message.length)],
     tmstmp: timeStamp[Math.floor(Math.random() * timeStamp.length)],
@@ -42,11 +43,23 @@ function simulate(){
 
 function sendmsg(messages){
   console.log('send message', messages)
-  var messageRef = usersRef.child(messages.msgID);
-  messageRef.update({'msgID': messageID[Math.floor(Math.random() * messageID.length)]});
-  messageRef.update({'msg': message[Math.floor(Math.random() * message.length)]});
-  messageRef.update({'tmstmp': timeStamp[Math.floor(Math.random() * timeStamp.length)]});
-  messageRef.update({'sdrusrnm': senderUsername[Math.floor(Math.random() * senderUsername.length)]});
+  /*var messageRef = usersRef.child(messages.bookName);
+  messageRef.push({'msg': message[Math.floor(Math.random() * message.length)]});
+  var key=messageRef.push({'msg': message[Math.floor(Math.random() * message.length)]}).key();*/
+  var messageData = {
+        message: message[Math.floor(Math.random() * message.length)],
+        messageID: messageID[Math.floor(Math.random() * messageID.length)],
+        timestamp: timeStamp[Math.floor(Math.random() * timeStamp.length)],
+        sender: timeStamp[Math.floor(Math.random() * timeStamp.length)]
+        
+      }
+  var messageRef1 = usersRef.child(messages.bookName);
+  messageRef1.push(messageData)
+  /*messageRef1.push({'msgID': messageID[Math.floor(Math.random() * messageID.length)]});
+  messageRef1.update({'msgID': messageID[Math.floor(Math.random() * messageID.length)]});
+  messageRef1.update({'msg': message[Math.floor(Math.random() * message.length)]});
+  messageRef1.update({'tmstmp': timeStamp[Math.floor(Math.random() * timeStamp.length)]});
+  messageRef1.update({'sdrusrnm': timeStamp[Math.floor(Math.random() * timeStamp.length)]});*/
 
 }
 
