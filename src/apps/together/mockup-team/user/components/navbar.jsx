@@ -16,10 +16,11 @@ class NavBar extends React.Component {
               </div>
         </div>
         </nav>
-        <a className="btn" onClick={this.props.actions.addbook}>Add a New Book</a>
-        <a className="btn" href="#"onClick={this.props.actions.joinbook}>Join a Book Room</a>
-        <a className="btn" href="#"onClick={this.props.actions.leavebook}>Leave Book Room</a>
-
+        <div className="row">
+        <div className="col s3"><a className="btn" onClick={this.props.actions.addbook}>Add a New Book</a></div>
+        <div className="col s3 offset-s1"><a className="btn" href="#"onClick={this.props.actions.joinbook}>Join a Book Room</a></div>
+        <div className="col s3 offset-s1"><a className="btn" href="#"onClick={this.props.actions.leavebook}>Leave Book Room</a></div>
+        </div>
       </div>
 
       

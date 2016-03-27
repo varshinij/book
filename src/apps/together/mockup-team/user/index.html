@@ -80,10 +80,15 @@
        
         
        <div id="app-container"> </div>
+       <div id="tabs"> </div> 
+        
+<div id="addBook"></div>
+<div id="joinBook"></div>
+<div id="leaveBook"></div>
        <div id="main">
         
 
- <div class="slider parallax-container responsive-img">
+    <div class="slider parallax-container responsive-img">
     <ul class="slides">
      
       <li>
@@ -162,13 +167,8 @@
    
    </div>
        </div>
-       <div id="joinBook"></div>
-       <div id="profile"></div>
-        <div id="tabs"> </div> 
-        <div align="center">
-          <div id="addBook"></div>
-          <div id="joinBook"></div>
-          <div id="leaveBook"></div>
+      
+
 
 
 
@@ -232,34 +232,14 @@
    <!-- <script type="text/babel" src="data1.jsx"></script>-->
     <script type="text/babel" src="data.jsx"></script> 
     <script type="text/babel">
-    // TODO: load skill data from Firebase
-       
-      
-
-      /*var ref = new Firebase('https://critiquetogether.firebaseio.com/');
-          ref.child('books/Dead').on('value', function(snapshot){
-            var skills = snapshot.val();
-            ReactDOM.render(
-              <MyComponents.SkillList skills={skills}/>,
-              $('#books').get(0)
-            );
-          });  */
+    
     </script>
     <script>
+    $(document).ready(function(){
+      $('.slider').slider({full_width: true});
+    });
 
-      /*var root = new Firebase('https://critiquetogether.firebaseio.com/');
-      var emailRef = root.child('messages/Dead');
-      console.log("emailref: " + emailRef);
-      emailRef.on('value', function(snapshot){
-          //$('#book').empty();
-          var emails = snapshot.val();
-          console.log("emails: " + emails);
-          for (var key in emails) {
-            var email = emails[key];
-            console.log(email);
-            $('#book').append('<li class="collection-item">' + 'Messages:'+email['message'] + '</li>');
-          }
-        }); */
+  
 
       </script>
 

@@ -47,7 +47,7 @@ firebaseRef.child('books')
 
 // Actions
 actions.login = function(){
-
+  $('#main').empty();
   firebaseRef.authWithOAuthPopup("github", function(error, authData){
 
     // handle the result of the authentication
@@ -86,7 +86,7 @@ actions.login = function(){
         data.user = snapshot.val()
         render()
       })
-      $('#main').empty();
+      
       $('#buttons1').append('<div class="row"><div class="col s12"><div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;"><a class="btn-floating btn-large red"><i class="large mdi-navigation-menu"></i></a><ul><li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li><li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li><li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li></ul></div></div></div>');
       $('#tabs').append('<div class="row"><div class="col s12"><div class="col s4" id="book"></div><div class="col s6 offset-s1" id="message"></div></div>');
 
@@ -105,11 +105,16 @@ actions.login = function(){
           for(var i in snapshot.child('bookList').val())
           {
             for(var j in bookname){
-              if (snapshot.child('bookList').val()[i] == bookname[j]){
+              if (snapshot.child('bookList').val()[i] == bookname[j])
+              {
                 var newBookRef = bookRef.child(bookname[j])
+
                 newBookRef.on('value', function(s){
                   data.books.push(s.val())
- $('#book').append('<ul class="collection"><div class="card cyan darken-1"><div class="card-content"><li class="collection-item><span class="title white-text">' + bookname[j] + '</span></li></div></div></ul>' );
+                  var author=bookRef.child(bookname[j])
+
+   $('#book').append('<ul class="collection" id="book-title"><li class="collection-item avatar deep-orange lighten-2" align="center"><a class="blue-grey-text darken-4" href="talkreads.html"><h4><b>'+bookname[j]+'</b></h4></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">');
+ //$('#book').append('<ul class="collection"><div class="card cyan darken-1"><div class="card-content"><li class="collection-item><span class="title white-text">' + bookname[j] + '</span></li></div></div></ul>' );
          
                   //render()
                 })
@@ -203,8 +208,8 @@ actions.addbook = function(){
     $('#tabs').empty();
     $('#addBook').empty();
     $('#joinBook').empty();
-    $('#profile').empty();
- $('#addBook').append('<div class="container"><div><h3>Add a Book<h3></div><form><div class="input-field col s6" align="center"><input id="name" type="text" class="validate"><label>Name of the Book</label></div><div class="input-field col s6" align="center"><input id="author" type="text" class="validate"><label>Author of the Book</label><div class="input-field col s6" align="center"><input id="description" type="text" class="validate"><label>Description</label><div class="input-field col s6" align="center"><input id="genre" type="text" class="validate"><label>Genre</label><div class="input-field col s6" align="center"><label for="disabled">Added by: '+user+'</label></form></div><a class="waves-effect waves-light orange btn white-text" id="add">Add the Book<i class="material-icons right">send</i></a>');
+    $('#leaveBook').empty();
+ $('#addBook').append('<div align="left"><a class="waves-effect waves-light orange btn white-text" id="back2">Back</a></div></div><div class="container"><div align ="center"><h3>Add a Book<h3></div><form><div class="input-field col s6" align="center"><input id="name" type="text" class="validate"><label>Name of the Book</label></div><div class="input-field col s6" align="center"><input id="author" type="text" class="validate"><label>Author of the Book</label><div class="input-field col s6" align="center"><input id="description" type="text" class="validate"><label>Description</label><div class="input-field col s6" align="center"><input id="genre" type="text" class="validate"><label>Genre</label><div class="input-field col s6" align="center"><label for="disabled">Added by: '+user+'</label></form></div><a class="waves-effect waves-light orange btn white-text" id="add">Add the Book<i class="material-icons right">send</i></a>');
  
       var root = new Firebase('https://critiquetogether.firebaseio.com/');
       var booksRef = root.child('books');
@@ -353,8 +358,82 @@ actions.addbook = function(){
           
 
       } })
-  
-  
+  $('#back2').click(function()
+  {
+    $('#book').empty();
+    $('#message').empty();
+    $('#tabs').empty();
+    $('#addBook').empty();
+    $('#joinBook').empty();
+    $('#leaveBook').empty();
+//console.log("in the if loop!");
+         // create a user object based on authData
+      var user = {
+        displayName: data.user.displayName,
+        username: data.user.username,
+        id: data.user.id,
+        status: 'online',// position, default to the map center
+        bookList:[]
+      }
+
+      var userBooks = []
+
+      var userRef = firebaseRef.child('users').child(user.username)
+      
+      userRef.on('value', function(snapshot){
+        data.user = snapshot.val()
+        render()
+      })
+      $('#main').empty();
+      $('#buttons1').append('<div class="row"><div class="col s12"><div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;"><a class="btn-floating btn-large red"><i class="large mdi-navigation-menu"></i></a><ul><li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li><li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li><li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li></ul></div></div></div>');
+      $('#tabs').append('<div class="row"><div class="col s12"><div class="col s4" id="book"></div><div class="col s6 offset-s1" id="message"></div></div>');
+
+      userRef.on('value',function(snapshot){
+        //console.log("User books:")
+        //console.log(snapshot.child('bookList').val())
+        userBooks.push(snapshot.child('bookList').val())
+        console.log("user book"+ userBooks)
+
+        
+        var bookRef = firebaseRef.child('books')
+        bookRef.on('value',function(snapshot1){
+          var bookname=Object.keys(snapshot1.val())
+          //console.log(bookname);
+          data.books = []
+          for(var i in snapshot.child('bookList').val())
+          {
+            for(var j in bookname){
+              if (snapshot.child('bookList').val()[i] == bookname[j]){
+                var newBookRef = bookRef.child(bookname[j])
+                newBookRef.on('value', function(s){
+                  data.books.push(s.val())
+ $('#book').append('<ul class="collection"><div class="card cyan darken-1"><div class="card-content"><li class="collection-item><span class="title white-text">' + bookname[j] + '</span></li></div></div></ul>' );
+         
+                  //render()
+                })
+              }
+            }
+          }
+        })
+      })
+
+           
+      var root = new Firebase('https://critiquetogether.firebaseio.com/');
+      var emailRef = root.child('messages/Dead');
+      //console.log("emailref: " + emailRef);
+      emailRef.on('value', function(snapshot){
+          
+          var emails = snapshot.val();
+          
+          for (var key in emails) {
+            var email = emails[key];
+            
+            
+            $('#message').append('<ul class="collection"><li>' + email['message'] + '</li></ul>');
+          }
+        });
+
+  });
 } 
 
 actions.joinbook = function(){
@@ -364,18 +443,79 @@ actions.joinbook = function(){
     $('#tabs').empty();
     $('#addBook').empty();
     $('#joinBook').empty();
-    $('#profile').empty();
-$('#joinBook').append('<div align="center"><h3>Select a Book Club to Join</h3></div><form action="#">');
+    $('#leaveBook').empty();
+$('#joinBook').append('<div align="left"><a class="waves-effect waves-light orange btn white-text" id="back1">Back</a></div></div><div align="center"><h3>Select a Book Club to Join</h3></div><form action="#">');
 var test1=0
 var book=[]
+var book1=[]
+var subtractedBooks=[]
+var booksChecked=[]
+var sub=[]
+      var root = new Firebase('https://critiquetogether.firebaseio.com/books');
+root.once("value", function(snapshot) {
+  
+  snapshot.forEach(function(childSnapshot) {
+    
+     booksChecked.push(childSnapshot.key());
+   })
+})
+    console.log("bookschecked: "+ booksChecked)
+    console.log(typeof(booksChecked))
+
+      
+var userRef = firebaseRef.child('users').child(data.user.username)
+      userRef.on('value',function(snapshot){
+        snapshot.forEach(function(childSnapshot) {
+    
+     book.push(snapshot.child('bookList').val())
+   })
+        
+        //console.log("User books: "+book)
+        //console.log(snapshot.child('bookList').val())
+        
+        var bookfound
+        
+        //console.log("checked books")
+        //console.log(booksChecked)
+        book = book.toString()
+        book = book.split(',')
+        for(var bookcheck in booksChecked)
+        {
+          bookcheck = booksChecked[bookcheck]
+          //console.log(typeof(book))
+          bookfound = false
+          for(var b in book)
+          { 
+            b = book[b]
+            //console.log("bookcheck - "+bookcheck)
+            //console.log("b - "+b)
+            if(bookcheck==b)
+            {
+              //console.log("Found")
+              bookfound = true
+            }
+          }
+
+          if(bookfound==false)
+            {
+            subtractedBooks.push(bookcheck)
+            }
+        }
+        //console.log("Final books :"+ subtractedBooks)
+      })
+
+
 var root = new Firebase('https://critiquetogether.firebaseio.com/books');
 root.once("value", function(snapshot) {
-  console.log("outside")
-  snapshot.forEach(function(childSnapshot) {
-    console.log("inside")
-    var key = childSnapshot.key();
+  
+ 
+    for(var i in subtractedBooks)
+    {
+      var subBooks=subtractedBooks[i]
+
+
     
-$('#joinBook').append('<p align=""center"><input type="checkbox" id="'+test1+'"/><label for="'+test1+'"">'+key+'</label></p>');
+$('#joinBook').append('<p align=""center"><input type="checkbox" id="'+test1+'"/><label for="'+test1+'"">'+subBooks+'</label></p>');
     /*if (document.getElementById(test1).checked) {
             alert("checked");
             var booksChecked=[]
@@ -385,11 +525,16 @@ $('#joinBook').append('<p align=""center"><input type="checkbox" id="'+test1+'"/
             alert("You didn't check it!");
         } */
         test1+=1
-        book.push(key);
-        
-    
-  });
+       
+       }  
+       
+       
+       sub = subtractedBooks.toString()
+        sub = sub.split(',')
+
+  
 });
+console.log("sub: "+ sub)
 $('#joinBook').append('</form><div align="center"><a class="waves-effect waves-light orange btn white-text" id="join">Join<i class="material-icons right">send</i></a></div></div>');
 
  $('#join').click(function()
@@ -397,15 +542,15 @@ $('#joinBook').append('</form><div align="center"><a class="waves-effect waves-l
 
 
       {
-        var booksChecked=[]
-        console.log(test1);
+        var booksChecked1=[]
+        
         for (var i=0; i<test1; i++)
         {
           
         if (document.getElementById(i).checked) {
             
-            booksChecked.push(book[i]);
-            console.log(booksChecked);
+            booksChecked1.push(sub[i]);
+            console.log("after sub is pushed"+booksChecked1);
             
         } else {
            
@@ -436,17 +581,17 @@ var userBooks=[]
         for (var key in bookList1)
         {
             var pushbook=bookList1[key]
-            booksChecked.push(pushbook);
+            booksChecked1.push(pushbook);
             
             //console.log("pushbook"+pushbook)
         }
-        console.log("userbooks" + booksChecked)
+        console.log("userbooks" + booksChecked1)
           
 
         render()
       })
      
-      userRef.child('bookList').set(booksChecked);
+      userRef.child('bookList').set(booksChecked1);
       
       
       $('#buttons1').append('<div class="row"><div class="col s12"><div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;"><a class="btn-floating btn-large red"><i class="large mdi-navigation-menu"></i></a><ul><li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li><li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li><li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li></ul></div></div></div>');
@@ -500,6 +645,116 @@ var userBooks=[]
 
 
 })
+
+$('#back1').click(function()
+
+
+
+      {
+        var booksChecked1=[]
+        
+        for (var i=0; i<test1; i++)
+        {
+          
+        if (document.getElementById(i).checked) {
+            
+            booksChecked1.push(sub[i]);
+            console.log("after sub is pushed"+booksChecked1);
+            
+        } else {
+           
+        }
+
+      }
+
+
+
+
+    
+    //console.log("in the if loop!");
+         // create a user object based on authData
+      var user = {
+        displayName: data.user.displayName,
+        username: data.user.username,
+        id: data.user.id,
+        status: 'online',// position, default to the map center
+        bookList:[]
+      }
+
+      
+var userBooks=[]
+      var userRef = firebaseRef.child('users').child(user.username)
+      userRef.child('bookList').on('value', function(snapshot){
+        var bookList1 = snapshot.val()
+       // console.log("booklist"+bookList1)
+        for (var key in bookList1)
+        {
+            var pushbook=bookList1[key]
+            booksChecked1.push(pushbook);
+            
+            //console.log("pushbook"+pushbook)
+        }
+        console.log("userbooks" + booksChecked1)
+          
+
+        render()
+      })
+     
+      userRef.child('bookList').set(booksChecked1);
+      
+      
+      $('#buttons1').append('<div class="row"><div class="col s12"><div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;"><a class="btn-floating btn-large red"><i class="large mdi-navigation-menu"></i></a><ul><li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li><li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li><li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li></ul></div></div></div>');
+      $('#tabs').append('<div class="row"><div class="col s12"><div class="col s4" id="book"></div><div class="col s6 offset-s1" id="message"></div></div>');
+
+      userRef.on('value',function(snapshot){
+        //console.log("User books:")
+        //console.log(snapshot.child('bookList').val())
+        userBooks.push(snapshot.child('bookList').val())
+        console.log("user book"+ userBooks)
+
+        
+        var bookRef = firebaseRef.child('books')
+        bookRef.on('value',function(snapshot1){
+          var bookname=Object.keys(snapshot1.val())
+          //console.log(bookname);
+          data.books = []
+          for(var i in snapshot.child('bookList').val())
+          {
+            for(var j in bookname){
+              if (snapshot.child('bookList').val()[i] == bookname[j]){
+                var newBookRef = bookRef.child(bookname[j])
+                newBookRef.on('value', function(s){
+                  data.books.push(s.val())
+ $('#book').append('<ul class="collection"><div class="card cyan darken-1"><div class="card-content"><li class="collection-item><span class="title white-text">' + bookname[j] + '</span></li></div></div></ul>' );
+         
+                  //render()
+                })
+              }
+            }
+          }
+        })
+      })
+
+           
+      var root = new Firebase('https://critiquetogether.firebaseio.com/');
+      var emailRef = root.child('messages/Dead');
+      //console.log("emailref: " + emailRef);
+      emailRef.on('value', function(snapshot){
+          
+          var emails = snapshot.val();
+          
+          for (var key in emails) {
+            var email = emails[key];
+            
+            
+            $('#message').append('<ul class="collection"><li>' + email['message'] + '</li></ul>');
+          }
+        });
+      $('#joinBook').empty();
+
+
+})
+
 }
 
 actions.leavebook = function(){
@@ -510,7 +765,7 @@ actions.leavebook = function(){
     $('#addBook').empty();
     $('#joinBook').empty();
     
-$('#leaveBook').append('<div align="center"><h3>Select a Book Club to Leave</h3></div><form action="#">');
+$('#leaveBook').append('<div align="left"><a class="waves-effect waves-light orange btn white-text" id="back3">Back<a></div></div><div align="center"><h3>Select a Book Club to Leave</h3></div><form action="#">');
 var test1=0
 var book=[]
 var root = new Firebase('https://critiquetogether.firebaseio.com/');
@@ -702,6 +957,83 @@ var subtractedBooks=[]
 
 
 })
+$('#back3').click(function()
+  {
+    $('#book').empty();
+    $('#message').empty();
+    $('#tabs').empty();
+    $('#addBook').empty();
+    $('#joinBook').empty();
+    $('#leaveBook').empty();
+//console.log("in the if loop!");
+         // create a user object based on authData
+      var user = {
+        displayName: data.user.displayName,
+        username: data.user.username,
+        id: data.user.id,
+        status: 'online',// position, default to the map center
+        bookList:[]
+      }
+
+      var userBooks = []
+
+      var userRef = firebaseRef.child('users').child(user.username)
+      
+      userRef.on('value', function(snapshot){
+        data.user = snapshot.val()
+        render()
+      })
+      $('#main').empty();
+      $('#buttons1').append('<div class="row"><div class="col s12"><div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;"><a class="btn-floating btn-large red"><i class="large mdi-navigation-menu"></i></a><ul><li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li><li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li><li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li></ul></div></div></div>');
+      $('#tabs').append('<div class="row"><div class="col s12"><div class="col s4" id="book"></div><div class="col s6 offset-s1" id="message"></div></div>');
+
+      userRef.on('value',function(snapshot){
+        //console.log("User books:")
+        //console.log(snapshot.child('bookList').val())
+        userBooks.push(snapshot.child('bookList').val())
+        console.log("user book"+ userBooks)
+
+        
+        var bookRef = firebaseRef.child('books')
+        bookRef.on('value',function(snapshot1){
+          var bookname=Object.keys(snapshot1.val())
+          //console.log(bookname);
+          data.books = []
+          for(var i in snapshot.child('bookList').val())
+          {
+            for(var j in bookname){
+              if (snapshot.child('bookList').val()[i] == bookname[j]){
+                var newBookRef = bookRef.child(bookname[j])
+                newBookRef.on('value', function(s){
+                  data.books.push(s.val())
+ $('#book').append('<ul class="collection"><div class="card cyan darken-1"><div class="card-content"><li class="collection-item><span class="title white-text">' + bookname[j] + '</span></li></div></div></ul>' );
+         
+                  //render()
+                })
+              }
+            }
+          }
+        })
+      })
+
+           
+      var root = new Firebase('https://critiquetogether.firebaseio.com/');
+      var emailRef = root.child('messages/Dead');
+      //console.log("emailref: " + emailRef);
+      emailRef.on('value', function(snapshot){
+          
+          var emails = snapshot.val();
+          
+          for (var key in emails) {
+            var email = emails[key];
+            
+            
+            $('#message').append('<ul class="collection"><li>' + email['message'] + '</li></ul>');
+          }
+        });
+
+  });
+
 }
 
 
