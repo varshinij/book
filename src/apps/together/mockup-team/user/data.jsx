@@ -86,16 +86,16 @@ actions.login = function(){
         data.user = snapshot.val()
         render()
       })
-      
+     
       //$('#buttons1').append('<div class="row"><div class="col s12"><div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;"><a class="btn-floating btn-large red"><i class="large mdi-navigation-menu"></i></a><ul><li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li><li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li><li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li></ul></div></div></div>');
-      $('#tabs').append('<div class="FixedHeightContainer"><div class="Content"><div class="col s4" id="book"></div></div></div><div class="FixedHeightContainer"><div class="Content1"><div class="col s6 offset-s1" id="message"></div></div></div>');
+      $('#tabs').append('<div class="FixedHeightContainer"><div class="Content"><div class="col s4" id="book"></div></div></div><div class="FixedHeightContainer"><div class="Content1" id="Content1"><div class="col s6 offset-s1" id="message"></div></div></div>');
 
       userRef.on('value',function(snapshot){
         //console.log("User books:")
         //console.log(snapshot.child('bookList').val())
         userBooks.push(snapshot.child('bookList').val())
         console.log("user book"+ userBooks)
-
+ 
         
         var bookRef = firebaseRef.child('books')
         bookRef.on('value',function(snapshot1){
@@ -112,8 +112,10 @@ actions.login = function(){
                 newBookRef.on('value', function(s){
                   data.books.push(s.val())
                   var author=bookRef.child(bookname[j])
+                         
+        
 
-   $('#book').append('<ul class="collection" id="book-title"><li class="collection-item avatar deep-orange lighten-2" align="center"><a class="blue-grey-text darken-4" href="talkreads.html"><h4><b>'+bookname[j]+'</b></h4></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">');
+   $('#book').append('<div class="collection"><a class="collection-item avatar orange white-text" align="center" href="#!"><h4><b>'+bookname[j]+'</b></h4></a></div>');
  //$('#book').append('<ul class="collection"><div class="card cyan darken-1"><div class="card-content"><li class="collection-item><span class="title white-text">' + bookname[j] + '</span></li></div></div></ul>' );
          
                   //render()
@@ -124,7 +126,7 @@ actions.login = function(){
         })
       })
 
-           
+       
       var root = new Firebase('https://critiquetogether.firebaseio.com/');
       var emailRef = root.child('messages/Dead');
       //console.log("emailref: " + emailRef);
@@ -136,7 +138,7 @@ actions.login = function(){
             var email = emails[key];
             
             
-            $('#message').append('<ul class="collection"><li>' + email['message'] + '</li></ul>');
+            $('#message').append('<ul class="collection"><div class="chip"><b>'+email['sender'] +':</b> '+ email['message'] + '</div></ul>');
           }
         });
 
@@ -209,7 +211,7 @@ actions.addbook = function(){
     $('#addBook').empty();
     $('#joinBook').empty();
     $('#leaveBook').empty();
- $('#addBook').append('<div align="left"><a class="waves-effect waves-light orange btn white-text" id="back2">Back</a></div></div><div class="container"><div align ="center"><h3>Add a Book<h3></div><form><div class="input-field col s6" align="center"><input id="name" type="text" class="validate"><label>Name of the Book</label></div><div class="input-field col s6" align="center"><input id="author" type="text" class="validate"><label>Author of the Book</label><div class="input-field col s6" align="center"><input id="description" type="text" class="validate"><label>Description</label><div class="input-field col s6" align="center"><input id="genre" type="text" class="validate"><label>Genre</label><div class="input-field col s6" align="center"><label for="disabled">Added by: '+user+'</label></form></div><a class="waves-effect waves-light orange btn white-text" id="add">Add the Book<i class="material-icons right">send</i></a>');
+ $('#addBook').append('<div align="left"><a class="waves-effect waves-light orange btn white-text" id="back2">Back</a></div></div><div class="container"><div align ="center" class="orange"><h3>Add a Book<h3></div><form><div class="input-field col s6" align="center"><input id="name" type="text" class="validate"><label>Name of the Book</label></div><div class="input-field col s6" align="center"><input id="author" type="text" class="validate"><label>Author of the Book</label><div class="input-field col s6" align="center"><input id="description" type="text" class="validate"><label>Description</label><div class="input-field col s6" align="center"><input id="genre" type="text" class="validate"><label>Genre</label><div class="input-field col s6" align="center"><label for="disabled">Added by: '+user+'</label></form></div><a class="waves-effect waves-light orange btn white-text" id="add">Add the Book<i class="material-icons right">send</i></a>');
  
       var root = new Firebase('https://critiquetogether.firebaseio.com/');
       var booksRef = root.child('books');
@@ -349,7 +351,7 @@ actions.addbook = function(){
             var email = emails[key];
             
             
-            $('#message').append('<ul class="collection"><li>' + email['message'] + '</li></ul>');
+            $('#message').append('<ul class="collection"><div class="chip"><b>'+email['sender'] +':</b> '+ email['message'] + '</div></ul>');
           }
         });
             $('#addBook').empty();
@@ -429,7 +431,7 @@ actions.addbook = function(){
             var email = emails[key];
             
             
-            $('#message').append('<ul class="collection"><li>' + email['message'] + '</li></ul>');
+            $('#message').append('<ul class="collection"><div class="chip"><b>'+email['sender'] +':</b> '+ email['message'] + '</div></ul>');
           }
         });
 
@@ -638,7 +640,7 @@ var userBooks=[]
             var email = emails[key];
             
             
-            $('#message').append('<ul class="collection"><li>' + email['message'] + '</li></ul>');
+            $('#message').append('<ul class="collection"><div class="chip"><b>'+email['sender'] +':</b> '+ email['message'] + '</div></ul>');
           }
         });
       $('#joinBook').empty();
@@ -747,7 +749,7 @@ var userBooks=[]
             var email = emails[key];
             
             
-            $('#message').append('<ul class="collection"><li>' + email['message'] + '</li></ul>');
+            $('#message').append('<ul class="collection"><div class="chip"><b>'+email['sender'] +':</b> '+ email['message'] + '</div></ul>');
           }
         });
       $('#joinBook').empty();
@@ -950,7 +952,7 @@ var subtractedBooks=[]
             var email = emails[key];
             
             
-            $('#message').append('<ul class="collection"><li>' + email['message'] + '</li></ul>');
+            $('#message').append('<ul class="collection"><div class="chip"><b>'+email['sender'] +':</b> '+ email['message'] + '</div></ul>');
           }
         });
       $('#leaveBook').empty();
@@ -985,7 +987,7 @@ $('#back3').click(function()
       })
       $('#main').empty();
       $('#buttons1').append('<div class="row"><div class="col s12"><div class="fixed-action-btn horizontal click-to-toggle" style="float:top; position:relative; margin-top:100px;"><a class="btn-floating btn-large red"><i class="large mdi-navigation-menu"></i></a><ul><li><a class="btn-floating red modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li><li><a class="btn-floating yellow darken-1 modal-trigger" href="#modal2"><i class="material-icons">perm_identity</i></a></li><li><a class="btn-floating deep-orange lighten-2 modal-trigger" href="#modal3"><i class="material-icons">search</i></a></li></ul></div></div></div>');
-      $('#tabs').append('<div class="FixedHeightContainer"><div class="Content"><div class="col s4" id="book"></div></div></div><div class="FixedHeightContainer"><div class="Content1"><div class="col s7 offset-s1" id="message"></div></div></div>');
+      $('#tabs').append('<div class="FixedHeightContainer"><div class="Content"><div class="col s4" id="book"></div></div></div><div class="FixedHeightContainer"><div class="Content1"><div class="col s6 offset-s1" id="message"></div></div></div>');
 
       userRef.on('value',function(snapshot){
         //console.log("User books:")
@@ -1028,13 +1030,13 @@ $('#back3').click(function()
             var email = emails[key];
             
             
-            $('#message').append('<ul class="collection"><li><b>'+email['sender']': </b>' + email['message'] + '</li></ul>');
+            $('#message').append('<ul class="collection"><div class="chip"><b><strong>'+email['sender'] +':</strong></b> '+ email['message'] + '</div></ul>');
           }
         });
 
   });
+} 
 
-}
 
 
 

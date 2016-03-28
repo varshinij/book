@@ -53,7 +53,7 @@ function sendmsg(messages){
         sender: senderUsername[Math.floor(Math.random() * timeStamp.length)]
         
       }
-  var messageRef1 = usersRef.child(messages.bookName);
+  var messageRef1 = usersRef.child('Dead');
   messageRef1.push(messageData)
   /*messageRef1.push({'msgID': messageID[Math.floor(Math.random() * messageID.length)]});
   messageRef1.update({'msgID': messageID[Math.floor(Math.random() * messageID.length)]});

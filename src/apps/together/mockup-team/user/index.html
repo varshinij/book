@@ -32,8 +32,36 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <style>
+
+/* label color */
+   .input-field label {
+     color: orange;
+   }
+
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: orange;
+   }
+
+     /* label focus color */
+   .input-field input[type=password]:focus + label {
+     color: orange;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 2px solid orange;
+     
+   }
+
+   /* label underline focus color */
+   .input-field input[type=password]:focus {
+     border-bottom: 2px solid orange;
+     
+   }
+
+
        body {
-        background-color: #fff3e0; 
+        background-image: url("images/bg.jpg"); 
         font-family: 'Cinzel', serif;
       }
       .card-panel{
@@ -49,6 +77,10 @@
       font-family: 'Tangerine', cursive;
 
   }
+  .chip
+  {
+    margin: 0;
+  }
   .app
           {
                position: absolute;
@@ -60,13 +92,36 @@
   overflow:scroll;
   position: absolute;
   top: 30%;
+  margin: 0;
+  border: none;
+
+
     
+} 
+.collection-item
+{
+  background-color: orange;
+  height: 60px;
+  padding:0px;
+  margin: 0;
+}
+li.btn1:focus
+{
+  background: #f4511e;
+}
+
+.collection
+{
+  margin: 0px;
+  padding: 3px;
+  border-style:none;
 }
           .FixedHeightContainer1
 {
   float:right;
-  
-  padding:3px; 
+  margin: 0px;
+  border: none;
+  padding:0px; 
   
    
 }
@@ -74,6 +129,8 @@
 .Content1
 {
   height:300px;
+  margin: 0;
+  border: none;
   overflow:scroll;
   position: absolute;
   right: 20%;
@@ -113,7 +170,7 @@
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
       
        
-       
+
 
         
        <div id="app-container"> </div>
