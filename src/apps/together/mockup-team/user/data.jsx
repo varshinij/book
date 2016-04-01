@@ -115,7 +115,7 @@ actions.login = function(){
                          
         
 
-   $('#book').append('<div class="collection"><a class="collection-item avatar orange white-text" align="center" href="#!"><h4><b>'+bookname[j]+'</b></h4></a></div>');
+   $('#book').append('<ul class="collection"><li class=" collection-item orange " align="center" ><h4><b><a class="white-text" href="#!">'+bookname[j]+'</a></b></h4></li></ul>');
  //$('#book').append('<ul class="collection"><div class="card cyan darken-1"><div class="card-content"><li class="collection-item><span class="title white-text">' + bookname[j] + '</span></li></div></div></ul>' );
          
                   //render()
@@ -329,7 +329,7 @@ actions.addbook = function(){
 
                   //console.log("bookname[j]" + bookname[j]);
            
-                  $('#book').append('<ul class="collection" id="book-title"><li class="collection-item avatar deep-orange lighten-2" align="center"><a class="blue-grey-text darken-4" href="talkreads.html"><h4><b>'+bookname[j]+'</b></h4></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">');
+                  $('#book').append('<ul class="collection"><li class=" collection-item orange " align="center" ><h4><b><a class="white-text" href="#!">'+bookname[j]+'</a></b></h4></li></ul>');
          
                   //render()
                 })
@@ -409,7 +409,7 @@ actions.addbook = function(){
                 var newBookRef = bookRef.child(bookname[j])
                 newBookRef.on('value', function(s){
                   data.books.push(s.val())
- $('#book').append('<ul class="collection" id="book-title"><li class="collection-item avatar deep-orange lighten-2" align="center"><a class="blue-grey-text darken-4" href="talkreads.html"><h4><b>'+bookname[j]+'</b></h4></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">');
+ $('#book').append('<ul class="collection"><li class=" collection-item orange " align="center" ><h4><b><a class="white-text" href="#!">'+bookname[j]+'</a></b></h4></li></ul>');
          
                   //render()
                 })
@@ -446,7 +446,7 @@ actions.joinbook = function(){
     $('#addBook').empty();
     $('#joinBook').empty();
     $('#leaveBook').empty();
-$('#joinBook').append('<div align="left"><a class="waves-effect waves-light orange btn white-text" id="back1">Back</a></div></div><div align="center"><h3>Select a Book Club to Join</h3></div><form action="#">');
+$('#joinBook').append('<div align="left"><a class="waves-effect waves-light orange btn white-text" id="back1">Back</a></div></div><div class="container"><div align="center" class="orange"><h3>Select a Book Club to Join</h3></div><form action="#">');
 var test1=0
 var book=[]
 var book1=[]
@@ -517,7 +517,7 @@ root.once("value", function(snapshot) {
 
 
     
-$('#joinBook').append('<p align=""center"><input type="checkbox" id="'+test1+'"/><label for="'+test1+'"">'+subBooks+'</label></p>');
+$('#joinBook').append('<div align="center"><input class="orange-check" type="checkbox" id="'+test1+'"/><label class="orange-text" for="'+test1+'"">'+subBooks+'</label></div><br/>');
     /*if (document.getElementById(test1).checked) {
             alert("checked");
             var booksChecked=[]
@@ -537,7 +537,7 @@ $('#joinBook').append('<p align=""center"><input type="checkbox" id="'+test1+'"/
   
 });
 console.log("sub: "+ sub)
-$('#joinBook').append('</form><div align="center"><a class="waves-effect waves-light orange btn white-text" id="join">Join<i class="material-icons right">send</i></a></div></div>');
+$('#joinBook').append('</form><div align="center"><a class="waves-effect waves-light orange btn white-text" id="join">Join<i class="material-icons right">send</i></a></div></div></div>');
 
  $('#join').click(function()
 
@@ -618,7 +618,7 @@ var userBooks=[]
                 var newBookRef = bookRef.child(bookname[j])
                 newBookRef.on('value', function(s){
                   data.books.push(s.val())
- $('#book').append('<ul class="collection" id="book-title"><li class="collection-item avatar deep-orange lighten-2" align="center"><a class="blue-grey-text darken-4" href="talkreads.html"><h4><b>'+bookname[j]+'</b></h4></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">');
+ $('#book').append('<ul class="collection"><li class=" collection-item orange " align="center" ><h4><b><a class="white-text" href="#!">'+bookname[j]+'</a></b></h4></li></ul>');
          
                   //render()
                 })
@@ -727,7 +727,7 @@ var userBooks=[]
                 var newBookRef = bookRef.child(bookname[j])
                 newBookRef.on('value', function(s){
                   data.books.push(s.val())
- $('#book').append('<ul class="collection" id="book-title"><li class="collection-item avatar deep-orange lighten-2" align="center"><a class="blue-grey-text darken-4" href="talkreads.html"><h4><b>'+bookname[j]+'</b></h4></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">');
+ $('#book').append('<ul class="collection"><li class=" collection-item orange " align="center" ><h4><b><a class="white-text" href="#!">'+bookname[j]+'</a></b></h4></li></ul>');
          
                   //render()
                 })
@@ -767,7 +767,7 @@ actions.leavebook = function(){
     $('#addBook').empty();
     $('#joinBook').empty();
     
-$('#leaveBook').append('<div align="left"><a class="waves-effect waves-light orange btn white-text" id="back3">Back<a></div></div><div align="center"><h3>Select a Book Club to Leave</h3></div><form action="#">');
+$('#leaveBook').append('<div align="left"><a class="waves-effect waves-light orange btn white-text" id="back3">Back<a></div><div class="container"><div align="center" class="orange"><h3 class="black-text">Select a Book Club to Leave</h3></div><form action="#">');
 var test1=0
 var book=[]
 var root = new Firebase('https://critiquetogether.firebaseio.com/');
@@ -778,14 +778,14 @@ root.child('users').child(data.user.username).child('bookList').once("value", fu
     //console.log("inside")
     var key = childSnapshot.val();
  
-$('#leaveBook').append('<p align=""center"><input type="checkbox" id="'+test1+'"/><label for="'+test1+'"">'+key+'</label></p>');
+$('#leaveBook').append('<div class="center"><input type="checkbox" id="'+test1+'"/><label class="orange-text" for="'+test1+'"">'+key+'</label></div>');
         test1+=1
         book.push(key);
         
     
   });
 });
-$('#leaveBook').append('</form><div align="center"><a class="waves-effect waves-light orange btn white-text" id="leave">Leave BookRoom<i class="material-icons right">send</i></a></div></div>');
+$('#leaveBook').append('</form><div align="center"><a class="waves-effect waves-light orange btn white-text" id="leave">Leave BookRoom<i class="material-icons right">send</i></a></div></div></div>');
 
  $('#leave').click(function()
 
@@ -930,7 +930,7 @@ var subtractedBooks=[]
                 var newBookRef = bookRef.child(bookname[j])
                 newBookRef.on('value', function(s){
                   data.books.push(s.val())
- $('#book').append('<ul class="collection" id="book-title"><li class="collection-item avatar deep-orange lighten-2" align="center"><a class="blue-grey-text darken-4" href="talkreads.html"><h4><b>'+bookname[j]+'</b></h4></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">');
+ $('#book').append('<ul class="collection"><li class=" collection-item orange " align="center" ><h4><b><a class="white-text" href="#!">'+bookname[j]+'</a></b></h4></li></ul>');
          
                   //render()
                 })
@@ -1008,7 +1008,7 @@ $('#back3').click(function()
                 var newBookRef = bookRef.child(bookname[j])
                 newBookRef.on('value', function(s){
                   data.books.push(s.val())
- $('#book').append('<ul class="collection" id="book-title"><li class="collection-item avatar deep-orange lighten-2" align="center"><a class="blue-grey-text darken-4" href="talkreads.html"><h4><b>'+bookname[j]+'</b></h4></a></span> <a data-target="modal1" class="modal-trigger" href="#modal4">');
+ $('#book').append('<ul class="collection"><li class=" collection-item orange " align="center" ><h4><b><a class="white-text" href="#!">'+bookname[j]+'</a></b></h4></li></ul>');
          
                   //render()
                 })
