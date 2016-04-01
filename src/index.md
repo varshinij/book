@@ -21,20 +21,20 @@ Everything I've learned from UCDD 2 - Spring 2016.
 * Together
   * [Mockup](apps/together/mockup)
     * [Data Models](apps/together/mockup/data.html)
-<<<<<<< HEAD
+
   * [Mockup Team](apps/together/mockup-team) <span class="chip red">NEW</span>        
   * [ReactJS](apps/together/mockup-team/user/index.html)
 
 ## Learning
 * [Week 8](learning/week8) <span class="chip red">NEW</span>
-=======
+
   * [Mockup Team](apps/together/mockup-team)
   * [ReactJS](apps/together)
 
 ## Learning
 * [Week 11](learning/week11)  <span class="chip red">NEW</span>
 * [Week 8](learning/week8)
->>>>>>> origin/master
+
 * [Week 7](learning/week7)
 * [Week 6](learning/week6)
 * [Week 5](learning/week5)
