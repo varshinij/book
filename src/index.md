@@ -19,7 +19,7 @@ Everything I've learned from UCDD 2 - Spring 2016.
     * [Plan](apps/uber/demo/plan.html)
     * [Execution](apps/uber/demo/execution.html)
 * Together
-  * [Mockup](apps/together/mockup)
+  * [Mockup](apps/together/mockup/user/index.html)
     * [Data Models](apps/together/mockup/data.html)
 
   * [Mockup Team](apps/together/mockup-team) <span class="chip red">NEW</span>        

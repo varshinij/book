@@ -115,7 +115,7 @@ actions.login = function(){
                          
         
 
-   $('#book').append('<ul class="collection"><li class=" collection-item orange " align="center" ><h4><b><a class="white-text" href="#!">'+bookname[j]+'</a></b></h4></li></ul>');
+   $('#book').append('<ul class="collection"><li class=" collection-item" align="center" ><h4><b><a class=" btn1 white-text" href="#!">'+bookname[j]+'</a></b></h4></li></ul>');
  //$('#book').append('<ul class="collection"><div class="card cyan darken-1"><div class="card-content"><li class="collection-item><span class="title white-text">' + bookname[j] + '</span></li></div></div></ul>' );
          
                   //render()
